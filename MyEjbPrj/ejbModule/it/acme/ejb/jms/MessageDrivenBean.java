@@ -47,28 +47,27 @@ public class MessageDrivenBean implements MessageListener {
     @PreDestroy
     private void preDestroy(){
     	System.out.println("#MessageDrivenBean: @PreDestroy CALLED!!");    	
-    }
-    
+    }    
 	
 	public void onMessage(Message message) {
-		//String ex = null; per test domanda 57
+		//String ex = null; //per test domanda 57
 		try {
 			TextMessage tm = (TextMessage) message;
-			//ex=tm.getText(); per test domanda 57
+			//ex=tm.getText(); //per test domanda 57
 			ejbRef.insertMessage(tm.getText());
 			System.out.println("#MessageDrivenBean: Consumed Message= "	+ tm.getText());
-			System.out.println("#MessageDrivenBean: onMessage CALLED!!");
-			//throw new JMSException("unexpected error..."); per test domanda 57
+			System.out.println("#MessageDrivenBean: onMessage CALLED!!");			
 		} catch (JMSException jex) {
 			System.out.println("Exception in onMessage(): " + jex);
 		}catch (BusinessException be){
 			System.out.println("Exception in insertMessage(): " + be);
 		}
-		/*per test domanda 57
-		if(ex.equalsIgnoreCase("aaa")){
+		/*
+		//per test domanda 57		
+		if(ex.contains("aaa")){
 			throw new RuntimeException();
 		}	
-		*/	
+		*/		
 	}
 
 }
