@@ -13,6 +13,7 @@ public class BusinessException extends EJBException  {
 	public BusinessException(Exception re, String message){
 		super(message,re);
 	}
+	//test GIT
 	
 
 }
