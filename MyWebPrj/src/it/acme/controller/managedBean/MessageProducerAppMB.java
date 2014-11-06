@@ -56,7 +56,7 @@ public class MessageProducerAppMB {
          }   	
 	}
     
-    public void sendMessageByMB(ActionEvent event){       	
+    public void sendMessageByEJB(ActionEvent event){       	
         try {        	
         	ejbRef.sendMessage(message); 
         	createFacesMessage(message,false);
