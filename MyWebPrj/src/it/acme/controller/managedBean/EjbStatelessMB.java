@@ -45,6 +45,7 @@ public class EjbStatelessMB implements Serializable {
 		createMessage( ejbRefJNDI.sayGoodBye(),null);		
 	}
 	
+	//test question10
 	public void callEjbQuestion10(ActionEvent event){
 		MyData data = new MyData();
 		data.a=1;
