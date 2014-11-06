@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ImportEntity">
+		<class>it.nerd.domain.data.EcoBot12mHst</class>
+		<class>it.nerd.domain.data.EcoBot12mHstPK</class>
+		<class>it.nerd.domain.data.Bot12mConsHst</class>
+		<class>it.nerd.domain.data.EcoAnagCurve</class>
+		<class>it.nerd.domain.data.EcoMarketData</class>
+		<class>it.nerd.domain.data.EcoMarketDataPK</class>
+		<class>it.nerd.domain.data.EcoHstParam</class>
+		<class>it.nerd.domain.data.EcoStgParam</class>
+		<class>it.nerd.domain.data.VwEcoEngineX</class>
+		<class>it.nerd.domain.data.VwEcoEngineXf</class>
+	</persistence-unit>
+</persistence>

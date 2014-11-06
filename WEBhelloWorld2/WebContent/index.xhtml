@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	template="/WEB-INF/templates/myTemplate.xhtml">
+	<ui:param name="title" value="Eclipse Template Test Page" />
+	<ui:param name="headerContent" value="test ICEfaces3.0" />
+	<ui:define name="menuItems">
+		
+	</ui:define>
+
+	<ui:define name="page-content">
+		<ice:panelGrid columns="1" styleClass="dynContentContainer">
+			<ui:include src="#{navigation.currentPage}" />
+		</ice:panelGrid>
+	</ui:define>
+
+
+	<!--  
+	<ui:define name="tabItems">			
+		<ui:include src="/main/gestione/employee/mainEmployee.xhtml" />
+	</ui:define>	
+	
+	-->
+</ui:composition>

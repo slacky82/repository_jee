@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core">
+	<ice:form>
+		<icecore:singleSubmit />
+		<ace:dataTable id="employeeTable"
+			value="#{myManagedBean.listEmployee}" var="employee">			
+			<ace:column id="name" headerText="Name">
+				<ace:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="nameCell" value="#{employee.name}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText id="nameInput" value="#{employee.name}" />
+					</f:facet>
+				</ace:cellEditor>
+			</ace:column>
+
+			<ace:column id="chassis" headerText="Surname">
+				<ace:cellEditor>
+					<f:facet name="output">
+						<h:outputText id="chassisCell" value="#{employee.surname}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText id="chassisInput" value="#{employee.surname}" />
+					</f:facet>
+				</ace:cellEditor>
+			</ace:column>
+
+			<ace:column id="options" headerText="Options">
+				<ace:rowEditor id="editor" />
+			</ace:column>
+
+			<ace:column id="editRow" headerText="Options">
+				<h:panelGrid id="list_option" columns="2">
+					<h:panelGroup>
+						<h:commandLink value="Delete"
+							action="#{myManagedBean.deleteEmployee(employee.id)}">
+							<!-- <f:param name="employee" value="#{employee}"/>	-->
+						</h:commandLink>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:commandLink value="Update"
+							action="#{myManagedBean.deleteEmployee(employee)}" />
+					</h:panelGroup>
+
+				</h:panelGrid>
+			</ace:column>
+		</ace:dataTable>
+
+		<ice:commandButton id="refreshButtonICE" value="refreshICE"
+			actionListener="#{myManagedBean.refreshEmployeeTable}" />
+		<ace:pushButton id="refreshButtonACE" value="refreshACE"		
+			label="this button refresh employee teble"
+			actionListener="#{myManagedBean.refreshEmployeeTable}" />
+	</ice:form>
+
+</ui:composition>

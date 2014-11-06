@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	template="/WEB-INF/templates/myTemplate.xhtml">
+	<ui:param name="title" value="Eclipse Template Test Page" />
+	<ui:param name="headerContent" value="test ICEfaces3.0" />
+	<ui:define name="menuItems">
+		<h:form id="menuForm">
+			<ace:menuBar id="#{menuBarBean.menuBarId}" autoSubmenuDisplay="true">
+				<ace:menuItem value="Home" 
+							  url="http://www.icefaces.org"
+							  target="_blank" 
+							  icon="ui-icon ui-icon-home" />
+				<ace:submenu id="tableTest" label="Table Test" icon="ui-icon ui-icon-document">
+					<ace:submenu id="new" label="New" icon="ui-icon ui-icon-contact">
+						<ace:menuItem id="window" 
+									  value="Employee"									  
+									  actionListener="#{menuBarBean.fireAction}">
+						</ace:menuItem>
+						
+						<ace:menuItem id="tab" value="Tab"								      
+							          actionListener="#{menuBarBean.fireAction}">
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:menuItem id="open" value="Open"					              
+						          actionListener="#{menuBarBean.fireAction}">						
+					</ace:menuItem>
+					
+					<ace:menuItem id="close" value="Close"					              
+						          actionListener="#{menuBarBean.fireAction}">					
+					</ace:menuItem>
+					
+				</ace:submenu>
+			</ace:menuBar>
+		</h:form>
+	</ui:define>
+	<ui:define name="tabItems">			
+		<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+	</ui:define>
+	<ui:define name="insertFormItems">	
+		<ui:include src="WEB-INF/templates/insertForm.html" />			
+	</ui:define>
+</ui:composition>

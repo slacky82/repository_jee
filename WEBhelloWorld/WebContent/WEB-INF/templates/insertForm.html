@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+	<h:form id="textEntryForm">
+		<ace:panel id="personalInfoInputPanel" header="Personal Info">
+			<h:panelGrid id="inputGrid" columns="1" width="100%">
+				<ace:textEntry id="firstNameInput"
+					value="AAAAA" label="First Name"
+					labelPosition="left" required="true" requiredIndicator="(*)"
+					indicatorPosition="right">
+					
+				</ace:textEntry>
+				<ace:textEntry id="lastNameInput" value="BBBB"
+					label="Last Name" labelPosition="left" required="false"
+					requiredIndicator="(*)" indicatorPosition="right">
+					
+				</ace:textEntry>
+				 <ace:pushButton
+               		 id="pushId"
+                	 value="submit"
+               		 label="this button submits the entire form"
+	       			 actionListener="#{myManagedBean.init}" />
+			</h:panelGrid>
+		</ace:panel>
+	</h:form>
+
+
+</ui:composition>

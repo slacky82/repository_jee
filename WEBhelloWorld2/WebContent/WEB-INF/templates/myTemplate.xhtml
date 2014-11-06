@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>#{title}</title>
+	<link rel="stylesheet" type="text/css"
+		href="./resources/css/template.css" />
+</h:head>
+<h:body>
+	<div class="header" align="center">
+		<ui:insert name="header">#{headerContent}</ui:insert>
+	</div>
+	<!-- MENU -->
+	<div class="topMenu">
+		<ice:form id="menuForm">
+			<ace:menuBar styleClass="menuBar" autoSubmenuDisplay="true"
+				effectDuration="100" effect="slide">
+				<ace:menuItem value="Home" icon="ui-icon ui-icon-home"
+					actionListener="#{navigation.executeNavigation}">
+					<f:attribute name="pagePath" value="/main/home.xhtml" />
+				</ace:menuItem>
+
+
+				<ace:submenu label="Employee" icon="ui-icon ui-icon-link">
+					<ace:menuItem value="List Employee"
+						actionListener="#{navigation.executeNavigation}">
+						<f:attribute name="pagePath"
+							value="/main/gestione/employee/mainEmployee.xhtml" />
+					</ace:menuItem>
+				</ace:submenu>
+			</ace:menuBar>
+		</ice:form>
+	</div>
+
+	<!-- CONTENT BODY -->
+	<div class="contentBody">		
+		<ui:insert name="page-content" />
+	</div>
+
+	<!-- FOOTER -->
+	<ice:panelGroup styleClass="footerWrapper">
+
+	</ice:panelGroup>
+
+</h:body>
+</html>

@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+	<h:panelGrid columns="1">
+		<h:outputText value="#{ejbStateless.resultCallEjb}"></h:outputText>
+
+		<h:commandButton id="show" value="Show Dialog"
+			onclick="sampleDialog.show();" type="button" />
+
+		<ace:pushButton id="pushId" value="Call Ejb"
+			actionListener="#{ejbStateless.callEjb}" />
+		<ace:pushButton id="ex10" value="Exercise 10"
+			actionListener="#{ejbStateless.callEjbQuestion10}" />
+	</h:panelGrid>
+
+</ui:composition>

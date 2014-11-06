@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+ 
+	
+
+	<h:head>
+		<title>-== ECOMODEL ==-</title>
+		<ice:outputStyle href="./xmlhttp/css/#{Template['template.style']}/#{Template['template.style']}.css"/>
+		<icecore:config mandatoryResource="dataTable" />
+	</h:head>
+	
+	<h:body>
+	
+		<!-- HEADER ACCESS INFO -->
+		<ice:panelGroup styleClass="accessInfo" />
+	
+		<ice:panelGroup>
+			<ice:form>
+				<!-- BREADCUMBS -->
+				<ice:panelGroup styleClass="breadCrumb">
+					<!-- ice:outputText value="#{navigation.breadCumbs}"/> -->
+				</ice:panelGroup>
+				<div class="topBar">
+					<!-- HEADER IMG -->
+					<div class="imageHeader">
+						<img src="./resources/images/logo_left.png" class="cdpLogoLeft" />
+						<img src="./resources/images/logo_right.png" class="cdpLogoRight" />
+					</div>
+					<!-- MENU -->
+				<ace:menuBar styleClass="menuBar" autoSubmenuDisplay="true"
+					effectDuration="100" effect="slide">
+					<ace:menuItem value="Home" icon="ui-icon ui-icon-home"
+						actionListener="#{navigation.executeNavigation}">
+						<f:attribute name="page" value="home" />
+					</ace:menuItem>
+					
+					<!-- NEW ECOMODEL -->
+					<ace:submenu label="Modello" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="parametri"
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="parametri" />
+						</ace:menuItem>
+					</ace:submenu>
+					
+					<ace:submenu label="Bot" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="carica consuntivo"
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="carica_consuntivo" />
+						</ace:menuItem>
+						<ace:menuItem value="media 12 M"
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="media_12_m" />
+						</ace:menuItem>
+					</ace:submenu>			
+					
+
+					<!-- REMOVE -->
+					<ace:submenu label="Gestione" icon="ui-icon ui-icon-link">
+						<ace:submenu label="Sottocategoria"
+							actionListener="#{navigation.executeNavigation}">
+							<ace:menuItem value="Inserisci / Modifica"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Eventi"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="test" />
+							</ace:menuItem>
+							<ace:menuItem value="Tagli"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Fasce"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Tassi"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Associazione Aliquota"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Commissioni Buoni"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+						</ace:submenu>
+						<ace:submenu label="Serie"
+							actionListener="#{navigation.executeNavigation}">
+							<ace:menuItem value="Inserisci / Modifica"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Coeff. Buoni Minori"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Info Condizioni Premia"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Coefficienti di Rendimento"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+							<ace:menuItem value="Cedole"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="not_available" />
+							</ace:menuItem>
+						</ace:submenu>
+						<ace:submenu label="Libretti"
+							actionListener="#{navigation.executeNavigation}">
+							<ace:menuItem value="Edizioni Smart"
+								actionListener="#{navigation.executeNavigation}">
+								<f:attribute name="page" value="test" />
+							</ace:menuItem>
+						</ace:submenu>
+						<ace:menuItem value="Regime Fiscale"
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="not_available" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:submenu label="Sispar Loading"
+						icon="ui-icon ui-icon-arrowthickstop-1-s">
+						<ace:menuItem value="Load..."
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="not_available" />
+						</ace:menuItem>
+						<ace:menuItem value="Worklist"
+							actionListener="#{navigation.executeNavigation}">
+							<f:attribute name="page" value="not_available" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:menuItem value="Logout" actionListener="#{navigation.logout}"
+						icon="ui-icon ui-icon-logout">
+						<f:attribute name="page" value="not_available" />
+					</ace:menuItem>
+
+				</ace:menuBar>
+			</div>
+	
+			</ice:form>
+	
+			<ice:outputStyle href="./resources/css/extraStyle.css" />
+			<ace:submitMonitor id="submitMonitor"
+				activeLabel="#{Template['wait_panel.attendere_prego']}"
+				serverErrorLabel="#{Template['wait_panel.server_error']}"
+				networkErrorLabel="#{Template['wait_panel.network_error']}"
+				sessionExpiredLabel="#{Template['wait_panel.sessione_scaduta']}"
+				for="" blockUI="@all" />
+	
+			<ice:form id="iceform">
+				<icecore:singleSubmit/>
+				<ui:insert name="page-content" />
+			</ice:form>
+		</ice:panelGroup>
+
+		<ice:panelGroup styleClass="footerWrapper">
+			<ice:panelGrid columns="3" styleClass="footer" columnClasses="panelGridColLeft,panelGridColCenter,panelGridColRight">
+				<ice:outputText value="Ecomodel" />
+				<ice:outputText value="Cassa depositi e prestiti S.p.A., Via Goito, 4 - 00185 Roma (RM)  -  Supporto Tecnico:	sisparweb@cassaddpp.it" />
+				<ice:outputText value="#{msgs['template.footer.versione']} 2.0.0" />
+			</ice:panelGrid>
+		</ice:panelGroup>	
+		
+	
+	</h:body>
+</html>

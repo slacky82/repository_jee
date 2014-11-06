@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"       
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+        xmlns:ace="http://www.icefaces.org/icefaces/components"
+        xmlns:ui="http://java.sun.com/jsf/facelets">      
+       
+        <ace:messages/>     
+                <ace:dataTable id="peopleList" value="#{peopleController.model.people}" var="person"> 
+                        
+                        <!-- First column is name -->
+                        <ace:column id="name" headerText="Name">
+                                <h:outputText id="nameCell" value="#{person.name}" />
+                        </ace:column>
+ 
+                        <!--  second column is if I like him/her -->
+                        <ace:column id="like" headerText="Like"> 
+                                <f:facet name="header">
+                                        <h:outputText value="Like" />                                                                               
+                                        <ace:selectMenu id="selectliked" value="#{peopleController.model.liked}"
+                                        				valueChangeListener="#{peopleController.likeChange}"                                        				
+                                        				label="Select like: "
+                                        				immediate="false">
+                                                <f:selectItems value="#{peopleController.model.likedSelectItems}" />                                                
+                                                <ace:ajax execute="@this" render="@all"/>                                                                                                                                                                                                                             
+                                        </ace:selectMenu>                                       
+                                </f:facet> 
+                                <!--  show if person is liked  -->
+                                <h:outputText id="likeCell" value="#{person.like}" />
+                        </ace:column>
+                </ace:dataTable>        
+ 
+</ui:composition>

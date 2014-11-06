@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+<h:head>
+	<title>TEST</title>
+	<h:outputStylesheet name="css/style.css" />
+	<h:outputStylesheet name="css/extraStyle.css" />
+</h:head>
+
+<h:body>
+	<!-- HEADER ACCESS INFO -->
+	<h:panelGroup styleClass="accessInfo" />
+	<h:panelGroup>
+		<h:form id="Menuform">
+			<!-- BREADCUMBS -->
+			<h:panelGroup styleClass="breadCrumb">
+				<h:outputText value="navigationModel.breadCumbs" />
+			</h:panelGroup>
+			<div class="topBar">
+				<!-- HEADER IMG -->
+				<div class="imageHeader">
+					<img src="./resources/images/logo_right.png" class="cdpLogoLeft" />
+					<img src="./resources/images/logo_right.png" class="cdpLogoRight" />
+				</div>
+				<!-- MENU -->
+				<ace:menuBar styleClass="menuBar" autoSubmenuDisplay="true"
+					effectDuration="500" effect="fade" >
+					<ace:menuItem value="Home" icon="ui-icon ui-icon-home"
+						actionListener="#{navigationController.executeNavigation}">
+						<f:attribute name="page" value="home" />
+					</ace:menuItem>
+
+					<ace:submenu label="EJB Stateless" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="Call EJB" 
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="ejb_sateless" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:submenu label="Statefull EJB" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="Call EJB"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="ejb_stateful" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:submenu label="Singleton EJB" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="Call EJB"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="ejb_singleton" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:submenu label="People" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="People EXAMPLE"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="people" />
+						</ace:menuItem>
+					</ace:submenu>
+
+					<ace:submenu label="Hibernate EJB" icon="ui-icon ui-icon-gear">
+						<ace:menuItem value="Insert employee"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="ejb_hibernate" />
+						</ace:menuItem>
+					</ace:submenu>
+					
+					<ace:submenu label="JMS" icon="ui-icon ui-icon-link">
+						<ace:menuItem value="Send message to queue"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="jms_send_messsage" />
+						</ace:menuItem>
+						<ace:menuItem value="Send message to queue by EJB"
+							actionListener="#{navigationController.executeNavigation}">
+							<f:attribute name="page" value="jms_send_messsage" />
+						</ace:menuItem>
+					</ace:submenu>
+
+				</ace:menuBar>
+			</div>
+		</h:form>
+
+		<h:form id="iceform_page_content">
+			<!--  icecore:singleSubmit/-->
+			<h:outputStylesheet name="css/style.css" />
+			<h:outputStylesheet name="css/extraStyle.css" />
+			<ui:insert name="page-content" />
+		</h:form>
+
+	</h:panelGroup>
+
+	<h:panelGroup styleClass="footerWrapper">
+		<h:panelGrid columns="3" styleClass="footer"
+			columnClasses="panelGridColLeft,panelGridColCenter,panelGridColRight">
+			<h:outputText value="JEE World" />
+			<h:outputText
+				value="Acme S.p.A., Seattle  -  Supporto Tecnico:	acmeweb@acme.com" />
+			<h:outputText value="#{msgs['template.footer.versione']} 2.0.0" />
+		</h:panelGrid>
+	</h:panelGroup>
+	<ui:include	src="../main/common/dialog/dialog.xhtml" />
+	<h:panelGroup>
+
+	</h:panelGroup>
+
+
+</h:body>
+</html>
