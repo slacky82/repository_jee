@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- START - DO NOT MODIFY THIS -->
+	<parent>
+		<groupId>org</groupId>
+		<artifactId>lib-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.data</groupId>
+	<artifactId>lib.data-jpa-ejb</artifactId>
+	<version>1.10.0</version>
+	<name>Lib / Data-Ejb</name>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/.dm/**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/.dm/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.logger</groupId>
+			<artifactId>lib.base-logger</artifactId>
+			<version>1.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.data</groupId>
+			<artifactId>lib.data-cl</artifactId>
+			<version>1.10.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.cassaddpp</groupId>
+			<artifactId>cmp.arca-ejb</artifactId>
+			<version>3.10.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+
+</project>
