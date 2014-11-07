@@ -15,6 +15,7 @@ import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.SystemException;
 
 import org.hibernate.Session;
 import org.hibernate.jpa.internal.EntityManagerImpl;
@@ -38,7 +39,7 @@ public class FilterStrategyFacadeBean implements FilterStrategyFacadeRemote,
 
 	@PostConstruct
 	private void init() {
-		System.out.println("#filterStrategyFacade: @PostConstruct CALLED!! ");
+		System.out.println("#filterStrategyFacade: @PostConstruct CALLED!! ");		
 		// hSession = ( (EntityManagerImpl) entityManager.getDelegate()
 		// ).getSession();
 	}
@@ -54,13 +55,13 @@ public class FilterStrategyFacadeBean implements FilterStrategyFacadeRemote,
 			objDAO.setSurname(objDTO.getSurname());
 			hSession.persist(objDAO);
 			System.out.println("#filterStrategyFacade: CallerPrincipalName "+ context.getCallerPrincipal().getName());
-			//throw new BusinessException();			
-			return true;
-		}catch (Exception e) {			
-			//System.out.println("catch");
+			throw new BusinessException();			
+			//return true;
+		}catch (Exception e) {				
+			System.out.println("#filterStrategyFacade: catching ");
 			throw new BusinessException(e, "Errore nel metodo  it.acme.ejb.stateless.FilterStrategyFacadeBean #insertEmployee ");			
 			 //context.setRollbackOnly();			
-		}		
+		}	
 	}
 
 	@Override
