@@ -227,7 +227,7 @@ public abstract class FilterStrategyServiceBean extends ArcaService implements F
 		}
 		return criteria.list();	
 	}
-	
+	 
 	private Object convertEntity(Object entity) throws ServiceException{
 		TransferDomain td = entity.getClass().getAnnotation(TransferDomain.class);
 		if(td == null)
