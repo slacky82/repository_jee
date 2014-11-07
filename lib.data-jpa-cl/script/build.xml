@@ -1,0 +1,19 @@
+<project name="SDIM Build" default="build">
+
+  <property file="build.properties" />
+  <property environment="env" />
+
+  <target name="build">
+    <delete dir="../deployDim" />
+    <exec dir=".." executable="/bin/bash">
+        <arg value="/esr/sdim/maven/bin/mvn"/>
+        <arg line="clean install deploy -PPRODUCTION" />
+    </exec>
+    <move tofile="../deployDim/${artifactId}.jar">
+      <fileset dir="../target">
+        <include name="*.jar"/>
+      </fileset>
+    </move>
+  </target>
+
+</project>
