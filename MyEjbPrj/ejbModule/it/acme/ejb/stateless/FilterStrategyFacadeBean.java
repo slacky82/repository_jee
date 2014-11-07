@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;
+import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -53,12 +54,13 @@ public class FilterStrategyFacadeBean implements FilterStrategyFacadeRemote,
 			objDAO.setSurname(objDTO.getSurname());
 			hSession.persist(objDAO);
 			System.out.println("#filterStrategyFacade: CallerPrincipalName "+ context.getCallerPrincipal().getName());
-			//throw new NullPointerException();			
+			//throw new BusinessException();			
 			return true;
-		}catch (RuntimeException e) {			
-			throw new BusinessException(e, "Errore nel metodo  it.acme.ejb.stateless.FilterStrategyFacadeBean #insertEmployee ");
-			// context.setRollbackOnly();
-		}
+		}catch (Exception e) {			
+			//System.out.println("catch");
+			throw new BusinessException(e, "Errore nel metodo  it.acme.ejb.stateless.FilterStrategyFacadeBean #insertEmployee ");			
+			 //context.setRollbackOnly();			
+		}		
 	}
 
 	@Override

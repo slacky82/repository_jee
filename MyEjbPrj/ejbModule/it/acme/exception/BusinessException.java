@@ -4,7 +4,7 @@ import javax.ejb.ApplicationException;
 import javax.ejb.EJBException;
 
 @ApplicationException(rollback = true)
-public class BusinessException extends EJBException  {
+public class BusinessException extends Exception  {
 	private static final long serialVersionUID = 1L;
 	
 	public BusinessException(Exception re){
@@ -13,7 +13,9 @@ public class BusinessException extends EJBException  {
 	public BusinessException(Exception re, String message){
 		super(message,re);
 	}
-	//test2 GIT
+	public BusinessException(){
+		super();
+	}
 	
 
 }
