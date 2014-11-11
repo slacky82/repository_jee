@@ -1,37 +1,41 @@
 package it.nerd.basic.cast;
 
-public class VeicoloTerrestre extends IVeicolo {
+public class VeicoloSpaziale extends IVeicolo {
+
+	public Integer numeroInceneritori;
 	
-	public Integer numeroRuote;
 	
-	public VeicoloTerrestre(Integer numeroRuote,String tipoAlimentazione, Double velocitaMax){		
-		this.numeroRuote=numeroRuote;
+	
+	public VeicoloSpaziale(Integer numeroBruciatori,String tipoAlimentazione, Double velocitaMax){
+		this.numeroInceneritori=numeroBruciatori;
 		this.tipoAlimentazione=tipoAlimentazione;
 		this.velocitaMax=velocitaMax;
 	}
 	
-	@Override
+	
+	
 	public void printInfo(){		
 		System.out.println("TIPO VEICOLO: "+this.getClass());
 		System.out.println("TIPO ALIMENTAZIONE: "+super.tipoAlimentazione);		
 		System.out.println("VELOCITA' MAX: "+super.velocitaMax);
-		System.out.println("NUMERO RUOTE: "+numeroRuote);		
+		System.out.println("NUMERO INCENERITORI: "+numeroInceneritori);		
 	}
+
 
 
 	@Override
 	public void ignition() {
-		System.out.println("chiave + accensione");
+		System.out.println("Complicato!!");
 		
 	}
+
 
 
 	@Override
 	public void switchOff() {
-		System.out.println("chiave + spegnimento");
+		System.out.println("Complicato!!");
 		
 	}
-	
 	
 	
 

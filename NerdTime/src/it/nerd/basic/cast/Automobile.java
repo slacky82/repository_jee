@@ -2,24 +2,18 @@ package it.nerd.basic.cast;
 
 public class Automobile extends VeicoloTerrestre {
 	
-	public Automobile(Integer numeroRuote,String tipoAlimentazione, Double velocitaMax){
-		this.numeroRuote=numeroRuote;
-		this.tipoAlimentazione=tipoAlimentazione;
-		this.velocitaMax=velocitaMax;
-	}
+	protected static final Integer numeroRuote=4;
+	
 
-	@Override
-	public String getTarga() {
-		return "AUTOMOBILE -> TARGA = AA124JL";
-	}
-
-	@Override
-	public Double calcolaBollo() {
-		return new Double(200.10);
-	}
+	public Automobile(String tipoAlimentazione,
+			Double velocitaMax) {
+		super(numeroRuote, tipoAlimentazione, velocitaMax);
+		// TODO Auto-generated constructor stub
+	}	
+	
 	
 	public void effettuaTestacoda(){
-		System.out.println("TESTA_CODA EFFETTUATA!!");
+		System.out.println("Testa Coda Effettuato!!");
 	}
 	
 	
