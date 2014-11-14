@@ -11,5 +11,9 @@
 		<class>it.nerd.domain.data.EcoStgParam</class>
 		<class>it.nerd.domain.data.VwEcoEngineX</class>
 		<class>it.nerd.domain.data.VwEcoEngineXf</class>
+		<class>it.nerd.domain.data.EcoSimResult</class>
+		<class>it.nerd.domain.data.EcoSimResultPK</class>
+		<class>it.nerd.domain.data.EcoOutResult</class>
+		<class>it.nerd.domain.data.EcoOutResultPK</class>
 	</persistence-unit>
 </persistence>
