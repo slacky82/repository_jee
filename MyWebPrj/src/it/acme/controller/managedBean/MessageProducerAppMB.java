@@ -81,6 +81,7 @@ public class MessageProducerAppMB {
 
     private  Message createJMSMessageForjmsHelloWorldQueue(Session session, Object messageData) throws JMSException {        
         TextMessage tm = session.createTextMessage();
+        tm.setStringProperty("type", "text");//ho messo un messageSelector nel message-driven-bean che fa passare solo messaggi con la property type=text
         tm.setText(messageData.toString());
         return tm;
     }
