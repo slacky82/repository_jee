@@ -1,0 +1,12 @@
+<root>
+  <facet id="jst.jsf">
+    <node name="libprov">
+      <attribute name="provider-id" value="GlassFish-4-SystemLibrary-JSF"/>
+    </node>
+  </facet>
+  <facet id="jst.icefaces">
+    <node name="libprov">
+      <attribute name="provider-id" value="icefaces-oss-library-provider"/>
+    </node>
+  </facet>
+</root>

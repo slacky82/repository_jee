@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:param name="title" value="Eclipse Template Test Page" />
+	<ui:param name="companyName" value="ICEsoft Technologies Inc." />
+	<ui:define name="menuItems">
+		<ace:menuItem value="Home" url="#" icon="ui-icon ui-icon-home"
+			styleClass="menuBarItem" />
+		<ace:menuItem value="Offices" url="#" styleClass="menuBarItem" />
+		<ace:menuItem value="Employees" url="#" styleClass="menuBarItem" />
+		<ace:menuItem value="Sales" url="#" styleClass="menuBarItem" />
+		<ace:menuItem value="Payroll" url="#" styleClass="menuBarItem" />
+	</ui:define>
+	<ui:define name="tabItems">
+		<ace:tabPane label="OTTAWA">
+			<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+		</ace:tabPane>
+		<ace:tabPane label="MONTREAL">
+			<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+		</ace:tabPane>
+		<ace:tabPane label="CALGARY">
+			<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+		</ace:tabPane>
+		<ace:tabPane label="TORONTO">
+			<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+		</ace:tabPane>
+		<ace:tabPane label="VANCOUVER">
+			<ui:include src="WEB-INF/templates/dataTable.xhtml" />
+		</ace:tabPane>
+	</ui:define>
+</ui:composition>

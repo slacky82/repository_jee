@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+		<ace:dataTable rows="10" value="#{menuBarBean.tableData}" var="person"
+			paginator="true" paginatorPosition="bottom">
+			<ace:column id="id" headerText="ID">
+				<h:outputText id="idCell" value="#{person.id}" />
+			</ace:column>
+			<ace:column id="userName" headerText="USER NAME">
+				<h:outputText id="userNameCell" value="#{person.userName}" />
+			</ace:column>
+			<ace:column id="password" headerText="PASSWORD">
+				<h:outputText id="passwordCell" value="#{person.password}" />
+			</ace:column>
+			<ace:column id="activationDate" headerText="ACTIVATION DATE">
+				<h:outputText id="activationDateCell"
+					value="#{person.activationDate}" />
+			</ace:column>
+			<ace:column id="firstName" headerText="FIRST NAME">
+				<h:outputText id="firstNameCell" value="#{person.firstName}" />
+			</ace:column>
+			<ace:column id="lastName" headerText="LAST NAME">
+				<h:outputText id="lastNameCell" value="#{person.lastName}" />
+			</ace:column>
+			<ace:column id="address" headerText="ADDRESS">
+				<h:outputText id="addressCell" value="#{person.address}" />
+			</ace:column>
+			<ace:column id="city" headerText="CITY">
+				<h:outputText id="cityCell" value="#{person.city}" />
+			</ace:column>
+			<ace:column id="province" headerText="PROVINCE">
+				<h:outputText id="provinceCell" value="#{person.province}" />
+			</ace:column>
+			<ace:column id="postalCode" headerText="POSTAL CODE">
+				<h:outputText id="postalCodeCell" value="#{person.postalCode}" />
+			</ace:column>
+			<ace:column id="homePhone" headerText="HOME PHONE">
+				<h:outputText id="homePhoneCell" value="#{person.homePhone}" />
+			</ace:column>
+			<ace:column id="workPhone" headerText="WORK PHONE">
+				<h:outputText id="workPhoneCell" value="#{person.workPhone}" />
+			</ace:column>
+			<ace:column id="cellPhone" headerText="CELL PHONE">
+				<h:outputText id="cellPhoneCell" value="#{person.cellPhone}" />
+			</ace:column>
+		</ace:dataTable>
+</ui:composition>

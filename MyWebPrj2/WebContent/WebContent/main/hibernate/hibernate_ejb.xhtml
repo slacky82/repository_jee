@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+	<h:panelGrid columns="1">
+
+		<ace:textEntry id="id_people" value="#{hibernateController.id}"
+			label="Id" labelPosition="left">
+		</ace:textEntry>
+
+		<ace:textEntry id="name" value="#{hibernateController.name}"
+			label="Name" labelPosition="left">
+		</ace:textEntry>
+
+		<ace:textEntry id="surname" value="#{hibernateController.surname}"
+			label="Surname" labelPosition="left">
+		</ace:textEntry>
+	</h:panelGrid>
+
+	<h:panelGroup>
+		<ace:pushButton id="insertEmployee" value="Insert"
+			actionListener="#{hibernateController.insert}" 
+			immediate="false">
+		</ace:pushButton>
+	</h:panelGroup>
+</ui:composition>

@@ -1,0 +1,33 @@
+.ui-datatable-odd {
+	background-color: lightgray !important;
+}
+
+body {
+  background-color: #D3DEE5; font-family: Helvetica, Arial, Verdana; padding: 0; margin: 0;
+}
+
+.header {
+  background-color: #093855; color: #fff;
+  font-family: Georgia; font-size: 2em; font-style: italic; padding: 10px;
+}
+
+.topMenu {
+  background-color: #093855; border-bottom: 20px solid LightSlateGray; color: #fff;
+  font-family: Georgia; font-size: 2em; font-style: italic; padding: 10px;
+}
+
+.menuBar {
+	font-size: 14px; background: #093855;
+}
+
+.menuBarItem {
+	color: #FFFFFF;
+}
+
+.menuBarItem:hover {
+	color: #000000;
+}
+
+.contentBody {
+  float: left; min-height: 400px; padding: 20px;
+}
