@@ -39,12 +39,12 @@ public class MyStatelessSessionBean implements MyStatelessSessionBeanRemote, MyS
 	}
 	*/
 	
-    @Override
-	@Interceptors(AInt.class)
+    @Override	
 	public String sayHello() {				
 		return "EJBStateless say: HELLO!!!";
 	}
    
+    @Interceptors(AInt.class)
     @Override
 	public String sayGoodBye() {			
 		return "EJBStateless say: GOODBYE!!!";

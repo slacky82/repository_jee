@@ -48,6 +48,7 @@ public class MessageProducerBean implements MessageProducerBeanRemote, MessagePr
 
     private  Message createJMSMessageForjmsHelloWorldQueue(Session session, Object messageData) throws JMSException {        
         TextMessage tm = session.createTextMessage();
+        tm.setStringProperty("type", "text");
         tm.setText(messageData.toString());
         return tm;
     }

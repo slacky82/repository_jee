@@ -26,7 +26,9 @@ import com.sun.jmx.snmp.Timestamp;
 					@ActivationConfigProperty(propertyName = "acknowledgeMode", 
 											  propertyValue = "Auto-acknowledge"),
 					@ActivationConfigProperty(propertyName = "destinationType", 
-											  propertyValue = "javax.jms.Queue")	
+											  propertyValue = "javax.jms.Queue"),
+					@ActivationConfigProperty(propertyName = "messageSelector",
+											  propertyValue = "type= 'text'")
 					}, 
 		mappedName = "jms/myQueue")
 public class MessageDrivenBean implements MessageListener {
