@@ -13,5 +13,9 @@
 		<h:commandButton id="sednMessageEJB" value="SendEJB"
 			actionListener="#{messageProducerApp.sendMessageByEJB}">
 		</h:commandButton>
+		
+		<h:commandButton id="sednMessageByLookup" value="SendLookup"
+			actionListener="#{messageProducerApp.sendJMSMessageToHelloWorldQueueByLookup}">
+		</h:commandButton>
 	</h:panelGrid>
 </ui:composition>
