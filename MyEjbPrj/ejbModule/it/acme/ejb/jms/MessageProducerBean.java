@@ -1,16 +1,8 @@
 package it.acme.ejb.jms;
 
-import java.util.Date;
-
-import it.acme.exception.BusinessException;
-
 import javax.annotation.Resource;
-import javax.ejb.EJBException;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -19,8 +11,6 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-
-import com.sun.jmx.snmp.Timestamp;
 
 
 @Stateless(mappedName = "messageProducer")
