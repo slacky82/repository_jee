@@ -417,10 +417,16 @@ body {
 }
 
 /*HACK*/
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+.ui-state-hover,
+.ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus{
     background: none !important;
-    background-color: #18a3a1 !important;
+    background-color: #18a3a1 !important;    
 }
+
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-state-active em {
     border:1px solid transparent/*{borderColorActive}*/;
     background: none !important;
