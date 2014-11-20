@@ -1,5 +1,6 @@
 package it.acme.ejb.stateful;
 
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
 /**
@@ -24,6 +25,11 @@ public class MySatefulSessionBean implements MySatefulSessionBeanRemote, MySatef
 	public void setValue(int value) {
 		this.value = value;
 	}  
+	
+	@Remove
+	public void removeEjb(){
+		System.out.println("#statefulEJB: @Remove");
+	}
     
     
     
