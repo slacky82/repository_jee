@@ -36,6 +36,12 @@ public class EjbStatefulMB implements Serializable {
 		value2=foo2.getValue();		
 	}
 	
+	
+	
+	public void removeInstanceEjb(ActionEvent event){
+		
+	}
+	
 	private MySatefulSessionBeanRemote getEjbRemoteLookup(){
 		MySatefulSessionBeanRemote ejbRefJNDI = null;
 		Context context = null;
