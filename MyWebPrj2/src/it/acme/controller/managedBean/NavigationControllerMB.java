@@ -2,6 +2,8 @@ package it.acme.controller.managedBean;
 
 
 
+import it.acme.data.dto.UserInfoDTO;
+
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -18,11 +20,13 @@ public class NavigationControllerMB implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;		
 	
-	private String currentPage;
+	private String currentPage;	
+	private UserInfoDTO userInfo;
 	
 	@PostConstruct
 	private void init(){
-		System.out.println("#navigationControllerMB: @PostConstruct CALLED!!!");		
+		System.out.println("#navigationControllerMB: @PostConstruct CALLED!!!");
+		setCurrentPage("./main/login/login.xhtml");			
 	}
 
 	public void executeNavigation(ActionEvent event){
@@ -54,6 +58,9 @@ public class NavigationControllerMB implements Serializable {
 		case"ice_faces":
 			setCurrentPage("./main/ice_faces/showCase.xhtml");	
 			break;
+		case"login":
+			setCurrentPage("./main/login/login.xhtml");	
+			break;	
 		default:
 			setCurrentPage("./main/home/home.xhtml");	
 			break;
@@ -68,6 +75,15 @@ public class NavigationControllerMB implements Serializable {
 	public void setCurrentPage(String currentPage) {
 		this.currentPage = currentPage;
 	}
+
+	public UserInfoDTO getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfoDTO userInfo) {
+		this.userInfo = userInfo;
+	}
+
 	
 	
 

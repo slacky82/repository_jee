@@ -29,11 +29,18 @@
 					<img src="./resources/images/logo_right.png" class="cdpLogoRight" />
 				</div>
 				<!-- MENU -->
+				<h:panelGroup rendered="#{navigationController.userInfo.loggedIn}">
 				<ace:menuBar styleClass="menuBar" autoSubmenuDisplay="true"
-					effectDuration="500" effect="fade" >
+					effectDuration="500" effect="fade">
+					
 					<ace:menuItem value="Home" icon="ui-icon ui-icon-home"
 						actionListener="#{navigationController.executeNavigation}">
 						<f:attribute name="page" value="home" />
+					</ace:menuItem>
+					
+					<ace:menuItem value="Login" icon="ui-icon ui-icon-home"
+						actionListener="#{navigationController.executeNavigation}">
+						<f:attribute name="page" value="login" />
 					</ace:menuItem>
 
 					<ace:submenu label="EJB Stateless" icon="ui-icon ui-icon-link">
@@ -90,6 +97,7 @@
 					</ace:submenu>
 
 				</ace:menuBar>
+				</h:panelGroup>
 			</div>
 		</h:form>
 

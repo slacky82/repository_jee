@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+	<h:panelGrid columns="5" columnClasses="labelColumn,fieldColumn">
+		<h:outputText value="Username:" />
+		<h:outputText value="#{userInfo.username}" />
+		<h:outputText value="Password:" />
+		<h:outputText value="#{userInfo.password}" />
+		<h:outputLink value="logout.jsp" style="color: red">Please log me out!</h:outputLink>
+	</h:panelGrid>
+	
+
+	
+	
+	
+	
+</ui:composition>

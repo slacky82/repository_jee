@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -50,6 +51,9 @@ public class EjbStatefulMB extends CommonBean {
 		createFacesMessage(res, false);
 	}
 	
+	public void logOut(ActionEvent event) {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();		
+	}
 	
 	
 	private MySatefulSessionBeanRemote getEjbRemoteLookup(){
