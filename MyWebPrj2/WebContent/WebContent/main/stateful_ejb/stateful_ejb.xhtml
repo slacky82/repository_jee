@@ -3,15 +3,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ace="http://www.icefaces.org/icefaces/components">
-	
+
 	<h:outputText value="EJB stateful"></h:outputText>
-	
-	<ace:pushButton id="pushId" value="Question 9"		
-		actionListener="#{ejbStateful.actionListener}"/>
-		
-	<h:outputText id="valueOfProperyEjb"
-	value="#{ejbStateful.value}"/>
-	<h:outputText id="valueOfProperyEjb2"
-	value="#{ejbStateful.value2}"/>
-	
+
+	<ace:pushButton id="pushId" value="Question 9"
+		actionListener="#{ejbStateful.actionListener}" />
+
+	<ace:pushButton id="callId" value="Call EJB"
+		actionListener="#{ejbStateful.callEjbStateful}" />
+
+	<ace:pushButton id="removeId" value="Remove EJB"
+		actionListener="#{ejbStateful.removeInstanceEjb}" />
+
+	<h:outputText id="valueOfProperyEjb" value="#{ejbStateful.value}" />
+	<h:outputText id="valueOfProperyEjb2" value="#{ejbStateful.value2}" />
+
 </ui:composition>

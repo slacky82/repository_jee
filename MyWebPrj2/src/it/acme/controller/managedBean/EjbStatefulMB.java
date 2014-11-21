@@ -1,10 +1,12 @@
 package it.acme.controller.managedBean;
 
 import it.acme.ejb.stateful.MySatefulSessionBeanRemote;
+import it.acme.util.CommonBean;
 
 import java.io.Serializable;
 import java.util.Properties;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -15,7 +17,10 @@ import javax.naming.NamingException;
 
 @ManagedBean(name="ejbStateful")
 @SessionScoped
-public class EjbStatefulMB implements Serializable {
+public class EjbStatefulMB extends CommonBean {
+	
+	@EJB
+	MySatefulSessionBeanRemote ejbRef;
 	
 	private int value;
 	private int value2;
@@ -34,13 +39,18 @@ public class EjbStatefulMB implements Serializable {
 		this.foo1.setValue(1);
 		value=foo1.getValue();
 		value2=foo2.getValue();		
-	}
-	
-	
+	}	
 	 
 	public void removeInstanceEjb(ActionEvent event){
-		
+		ejbRef.removeEjb();
 	}
+	
+	public void callEjbStateful(ActionEvent event){
+		String res=ejbRef.callEjbStateful();
+		createFacesMessage(res, false);
+	}
+	
+	
 	
 	private MySatefulSessionBeanRemote getEjbRemoteLookup(){
 		MySatefulSessionBeanRemote ejbRefJNDI = null;
