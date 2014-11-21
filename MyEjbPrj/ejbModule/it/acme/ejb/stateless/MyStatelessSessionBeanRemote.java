@@ -11,7 +11,5 @@ public interface MyStatelessSessionBeanRemote {
 	public String sayGoodBye();
 	public String getFielEjb();
 	public void setFieldEjb(String fieldValue);
-	public void foo(MyData data);
-	
-	
+	public void foo(MyData data);	
 }

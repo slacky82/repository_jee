@@ -4,6 +4,8 @@ import it.acme.interceptors.AInt;
 import it.acme.util.MyData;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.Remove;
 import javax.ejb.Stateless;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptors;
@@ -30,7 +32,11 @@ public class MyStatelessSessionBean implements MyStatelessSessionBeanRemote, MyS
     public void testPostConstruct(){
     	System.out.println("#StatelessEJB: @PostConstruct CALLED!!!");
     }
-    
+   
+    @PreDestroy
+    public void testPreDestroy(){
+    	System.out.println("#StatelessEJB: @PreDestroy CALLED!!!");
+    }    
       
     /*@AroundInvoke
     public Object around(InvocationContext invCtx) throws Exception{
@@ -65,6 +71,8 @@ public class MyStatelessSessionBean implements MyStatelessSessionBeanRemote, MyS
 	public void setFieldEjb(String fieldValue) {
 		this.propertyA=fieldValue;		
 	}
+
+	
 
 	
 	
