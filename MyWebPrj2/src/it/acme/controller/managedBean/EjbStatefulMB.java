@@ -37,7 +37,7 @@ public class EjbStatefulMB implements Serializable {
 	}
 	
 	
-	
+	 
 	public void removeInstanceEjb(ActionEvent event){
 		
 	}
