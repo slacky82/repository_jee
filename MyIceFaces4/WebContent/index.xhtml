@@ -1,0 +1,31 @@
+<ui:composition
+	template="./WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+	<ui:define name="page-content">
+		<h:panelGroup styleClass="dynContent">		
+			<h:panelGrid styleClass="dynContentHeader" columns="2" columnClasses="alignLeft, alignRight" style="background-color:#eee;">
+				<h:outputText value="navigation.currentTitle" />				
+				<h:panelGrid style="float:left;" columns="4">
+					<h:panelGrid columns="3" cellpadding="0" cellspacing="0">								
+						<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;"/>
+						<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;"/>
+						<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;"/>
+					</h:panelGrid>
+					<h:outputText value="#{user.remoteUser}" style="margin-right: 0px !important;" />
+					<h:outputText value="#{user.authType}" style="margin-right: 0px !important;" />
+					<h:outputText value="user.loggedUser" styleClass="userLogged" />	
+				</h:panelGrid>				
+			</h:panelGrid>
+			
+			<h:panelGrid columns="1" styleClass="dynContentContainer">
+				<ui:include src="#{navigationController.currentPage}" />				
+			</h:panelGrid>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
