@@ -1,0 +1,6 @@
+#surefire
+#Sat Sep 05 11:56:13 CEST 2015
+maven.ext.class.path=/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar
+user.dir=/Users/slacky/NetBeansProjects/MavenEnterpriseApp/MavenEnterpriseApp-ejb
+localRepository=/Users/slacky/.m2/repository
+basedir=/Users/slacky/NetBeansProjects/MavenEnterpriseApp/MavenEnterpriseApp-ejb
