@@ -49,7 +49,6 @@ public class UserLogin implements Serializable {
     } 
     
     public void logout() {
-        
         try {
             ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
             ec.invalidateSession();            

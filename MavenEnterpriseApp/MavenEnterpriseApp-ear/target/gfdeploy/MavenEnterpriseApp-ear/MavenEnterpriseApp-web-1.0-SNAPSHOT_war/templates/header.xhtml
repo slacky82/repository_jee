@@ -12,6 +12,7 @@
         <p:outputLabel value="#{msg['header.welcomeUser']}"/>
         <p:outputLabel value="#{loginController.loggedUserId}"/>
         <h:form id="formHeader">
-            <p:commandButton value="Logout" actionListener="#{loginController.logout()}"/>
+            <p:commandButton value="Logout" 
+                             actionListener="#{loginController.logout()}"/>
         </h:form>
 </ui:composition>

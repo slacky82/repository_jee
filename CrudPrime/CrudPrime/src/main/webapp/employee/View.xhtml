@@ -12,7 +12,7 @@
             <h:form id="EmployeeViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{employeeController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEmployeeLabel_id}"/>
+                        <h:outputText value="id"/>
                         <h:outputText value="#{employeeController.selected.id}" title="#{bundle.ViewEmployeeTitle_id}"/>
                         <h:outputText value="#{bundle.ViewEmployeeLabel_name}"/>
                         <h:outputText value="#{employeeController.selected.name}" title="#{bundle.ViewEmployeeTitle_name}"/>

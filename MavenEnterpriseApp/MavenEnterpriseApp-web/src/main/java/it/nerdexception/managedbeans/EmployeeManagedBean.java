@@ -19,6 +19,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import org.primefaces.event.TabChangeEvent;
 
 /**
@@ -55,15 +56,6 @@ public class EmployeeManagedBean implements Serializable{
         System.out.println("#employeeMB: @PostConstruct CALLED!!!");            
     }
         
-
-    public void getAllEmployee() {
-        try {
-            newSessionBean.businessMethod();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
     public void getUserById(){
        FacesContext context = FacesContext.getCurrentInstance(); 
        try{
@@ -83,14 +75,10 @@ public class EmployeeManagedBean implements Serializable{
         }         
     }
     
-    public void saveEmploye() throws InterruptedException {
-        //Thread.sleep(1000);       
+    public void saveEmploye() throws InterruptedException {             
         FacesContext context = FacesContext.getCurrentInstance();    
-	Employee employee = new Employee();
-	employee.setName(getName());
-	employee.setSurname(getSurname());
 	try{
-            employeeFacade.saveEmployee(employee);
+            employeeFacade.saveEmployee(selected);
             findAll();            
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
                 "save operation", "OK") );          
@@ -100,10 +88,33 @@ public class EmployeeManagedBean implements Serializable{
 	}		
     }
     
+    public void update(){
+        if(selected != null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            try{
+            employeeFacade.edit(selected);
+            findAll();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                "employee as been updates", "success") ); 
+        }catch (Exception e) {
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+            "remove operation error", e.toString()) );
+            e.printStackTrace();
+        }
+        }       
+    }
+    
+    public Employee prepareCreate() {
+        System.out.println("prepareCreate called");
+        selected = new Employee();
+        return selected;
+    }
+    
     public void destroy() {
+        System.out.println("destroy call");
         FacesContext context = FacesContext.getCurrentInstance();
         try{
-            employeeFacade.remove(getSelected());
+            employeeFacade.remove(selected);
             findAll();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
                 "employee as been deleted", "success") ); 
@@ -137,6 +148,12 @@ public class EmployeeManagedBean implements Serializable{
         }
     }
 
+    public Integer dummyMethod(ActionEvent event){
+        System.out.println("dummyMethod is CALLED!!!");
+        return 100;
+    }
+    
+    
     //getters setters
 
     public List<Employee> getItems() {
