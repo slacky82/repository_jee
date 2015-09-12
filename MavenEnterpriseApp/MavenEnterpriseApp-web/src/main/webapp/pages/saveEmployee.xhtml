@@ -19,44 +19,49 @@
         </h:form>    
         
         <p:accordionPanel id="apEmployee" dynamic="true" activeIndex="0">
-            <p:ajax event="tabChange" listener="#{employee.onChange}" />
+            <p:ajax event="tabChange" listener="#{employee.tabOnChange}" />
             <p:tab id="employee_tab_01" title="#{label['accordionPanel.firstTabTitle']}">
                 <h:form id="formDummy">
-                    <p:messages id="msgs" />
-                    <p:fragment autoUpdate="true">
-                        <h:panelGrid columns="3" cellpadding="5">
-                            <p:outputLabel for="name" value="#{label['saveEmployee.label.name']}" />
-                            <p:inputText id="name" 
-                                         value="#{employee.name}" 
-                                         required="true"
-                                         requiredMessage="mittc lu nom"/>
-                            <p:message for="name"/>
-                            
+                    <p:panel id="panel" header="#{label['simpleexample.panel']}">
+                        <p:messages id="msgs" showDetail="true" />                    
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:outputLabel for="name" value="#{label['saveEmployee.label.name']}" />
+                                <p:inputText id="name" 
+                                             value="#{employee.name}" 
+                                             required="true"
+                                             requiredMessage="#{msg['simpleexample.name']}"/>
+                                <p:message for="name"/>                                
+                                <p:outputLabel for="surname" value="#{label['saveEmployee.label.surname']}" />
+                                <p:inputText id="surname" 
+                                             value="#{employee.surname}" 
+                                             required="true"
+                                             requiredMessage="#{msg['simpleexample.surname']}"/>
+                                <p:message for="surname"/>
 
-                            <p:outputLabel for="surname" value="#{label['saveEmployee.label.surname']}" />
-                            <p:inputText id="surname" 
-                                         value="#{employee.surname}" 
-                                         required="true"
-                                         requiredMessage="mittc lu cugnom"/>
-                             <p:message for="surname"/>
-
-                            <p:commandButton value="#{label['saveEmployee.buttons.save']}" 
-                                             actionListener="#{employee.dummyMethod()}" 
-                                             ajax="true"
-                                             update="formDummy"/>
-                            <p:commandButton value="Reset" actionListener="#{employee.resetEmployee()}" /> 
-                        </h:panelGrid>
-                    </p:fragment>                    
+                                <p:commandButton value="#{label['saveEmployee.buttons.save']}" 
+                                                 actionListener="#{employee.dummyMethod()}" 
+                                                 update=":apEmployee:formDummy"/>
+                                <!--RESET-->
+                                <p:commandButton value="#{label['saveEmployee.buttons.reset']}"                                             
+                                                 actionListener="#{employee.resetEmployee()}"
+                                                 process="@this"
+                                                 update=":apEmployee:formDummy"
+                                                 /> 
+                            </h:panelGrid>
+                    </p:panel>            
                 </h:form>    
             </p:tab>
 
             <p:tab id="employee_tab_02" title="#{label['accordionPanel.secondTabTitle']}">
                 <h:form id="mainForm3">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:inputText value="#{employee.id}" />
-                        <p:commandButton value="Load" actionListener="#{employee.getUserById}" 
-                                         ajax="true"/>
-                    </h:panelGrid>   
+                    <p:growl id="fileUploadMessages" showDetail="true" />
+                    <p:fileUpload value="#{fileUploadView.file}" 
+                                  mode="simple" 
+                                  />
+                    <p:commandButton value="Submit" 
+                                     ajax="false" 
+                                     actionListener="#{fileUploadView.upload}" 
+                                     disabled="true" />   
                 </h:form>    
             </p:tab>
 

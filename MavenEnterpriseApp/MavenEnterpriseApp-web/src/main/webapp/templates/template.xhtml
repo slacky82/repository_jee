@@ -18,17 +18,13 @@
         <h:body>
             <ui:debug />		
             <p:layout fullPage="true" resizeTitle="resize" style="background-color:#FFFFFF;">
-                <!--  
-                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" widgetVar="statusDialog" />
-                <p:dialog widgetVar="statusDialog" 
-                        modal="true" 
-                        draggable="false" 
-                        closable="true" 
-                        resizable="false" 
-                        showHeader="true">    
+                <!--Status ajax indicator -->
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" 
+                          closable="false" resizable="false" showHeader="false">
                 <p:graphicImage value="/resources/images/ajax-loader.gif" />
-                </p:dialog>	
-                -->
+                </p:dialog>
+                
                 <p:layoutUnit position="north" size="100" id="north" >
                     <ui:include src="header.xhtml" />
                 </p:layoutUnit>

@@ -11,6 +11,8 @@ import it.nerdexception.entities.Employee;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -20,6 +22,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.TabChangeEvent;
 
 /**
@@ -104,14 +107,12 @@ public class EmployeeManagedBean implements Serializable{
         }       
     }
     
-    public Employee prepareCreate() {
-        System.out.println("prepareCreate called");
+    public Employee prepareCreate() {        
         selected = new Employee();
         return selected;
     }
     
-    public void destroy() {
-        System.out.println("destroy call");
+    public void destroy() {        
         FacesContext context = FacesContext.getCurrentInstance();
         try{
             employeeFacade.remove(selected);
@@ -119,16 +120,16 @@ public class EmployeeManagedBean implements Serializable{
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
                 "employee as been deleted", "success") ); 
         }catch (Exception e) {
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-            "remove operation error", e.toString()) );
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                "remove operation error", e.toString()) );
             e.printStackTrace();
         }
     }
     
     public void resetEmployee(){
-        System.out.println("reset call");
-        setName("");
-        setSurname("");
+        RequestContext.getCurrentInstance().reset(":apEmployee:formDummy");
+        name=null;
+        surname=null;       
     }
 
     public void findAll(){
@@ -139,7 +140,7 @@ public class EmployeeManagedBean implements Serializable{
         }       
     }
     
-    public void onChange(TabChangeEvent event) {
+    public void tabOnChange(TabChangeEvent event) {
         System.out.println("bundle:"+ResourceBundle.getBundle("/label").getString("accordionPanel.firstTabTitle"));
         System.out.println("Tab Changed :: You've Requested Seeing :: "
                 + event.getTab().getTitle()+"id: "+ event.getTab().getId() );
@@ -148,9 +149,17 @@ public class EmployeeManagedBean implements Serializable{
         }
     }
 
-    public Integer dummyMethod(ActionEvent event){
-        System.out.println("dummyMethod is CALLED!!!");
-        return 100;
+    public Integer dummyMethod(){
+        try {
+            Thread.sleep(2000L);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("clientID", new FacesMessage(FacesMessage.SEVERITY_INFO, "name", name));
+            context.addMessage("clientID", new FacesMessage(FacesMessage.SEVERITY_INFO, "surname", surname));
+            return 100;
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EmployeeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     
     
