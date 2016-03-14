@@ -3,7 +3,7 @@ package it.nerd.kata.src;
 import java.util.List;
 
 public class StringCalculator {
-	
+	/*TEST_GIT*/
 	/**
 	 * The method can take 0, 1 or 2 numbers, 
 	 * and will return their sum (for an empty string it will return 0) 
