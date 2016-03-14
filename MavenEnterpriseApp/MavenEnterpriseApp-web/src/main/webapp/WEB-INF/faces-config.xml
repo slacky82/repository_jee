@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <resource-bundle>
+            <base-name>messages</base-name>
+                <var>msg</var>
+	</resource-bundle>
+	<resource-bundle>
+            <base-name>label</base-name>
+		<var>label</var>
+	</resource-bundle>
+    </application>
+    <!-- configuration of navigation rules -->	
+	
+    <!-- more-then-one bean --> 
+    <navigation-rule>    	    	
+       <navigation-case>
+         <from-action>#{navigationController.processPage1}</from-action>
+         <from-outcome>page</from-outcome>
+         <to-view-id>/pages/saveEmployee.xhtml</to-view-id>
+      </navigation-case>
+      
+     <navigation-case>
+        <from-action>#{navigationController.processPage2}</from-action>
+        <from-outcome>page</from-outcome>
+        <to-view-id>/pages/page2.xhtml</to-view-id>
+     </navigation-case>
+     
+     <!-- only-one bean -->
+     <navigation-case>
+        <from-action>#{navigationController.showPage}</from-action>
+        <from-outcome>page3</from-outcome>
+        <to-view-id>/pages/page3.xhtml</to-view-id>         
+     </navigation-case>
+     
+     <navigation-case>
+        <from-action>#{navigationController.showPage}</from-action>
+        <from-outcome>page4</from-outcome>
+        <to-view-id>/pages/page4.xhtml</to-view-id>         
+     </navigation-case>
+     
+     <navigation-case>
+        <from-action>#{navigationController.showPage}</from-action>
+        <from-outcome>page5</from-outcome>
+        <to-view-id>/pages/page5.xhtml</to-view-id>         
+     </navigation-case>
+     <!--eliminare-->
+     <navigation-case>
+        <from-action>#{navigationController.showPage}</from-action>
+        <from-outcome>page6</from-outcome>
+        <to-view-id>/pages/login.xhtml</to-view-id>         
+     </navigation-case>
+      
+    </navigation-rule>
+</faces-config>

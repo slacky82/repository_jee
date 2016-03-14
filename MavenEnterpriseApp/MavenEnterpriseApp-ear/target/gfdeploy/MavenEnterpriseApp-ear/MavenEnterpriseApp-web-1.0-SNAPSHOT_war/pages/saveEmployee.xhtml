@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/templates/template.xhtml">   
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="contentEast">
+        contentEast
+    </ui:define>
+
+    <ui:define name="content">
+        
+        <h:form id="formGrowl">
+            <p:growl id="growlMsg" showDetail="true" sticky="false" life="2400"/>
+        </h:form>    
+        
+        <p:accordionPanel id="apEmployee" dynamic="true" activeIndex="0">
+            <p:ajax event="tabChange" listener="#{employee.tabOnChange}" />
+            <p:tab id="employee_tab_01" title="#{label['accordionPanel.firstTabTitle']}">
+                <h:form id="formDummy">
+                    <p:panel id="panel" header="#{label['simpleexample.panel']}">
+                        <p:messages id="msgs" showDetail="true" />                    
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:outputLabel for="name" value="#{label['saveEmployee.label.name']}" />
+                                <p:inputText id="name" 
+                                             value="#{employee.name}" 
+                                             required="true"
+                                             requiredMessage="#{msg['simpleexample.name']}"/>
+                                <p:message for="name"/>                                
+                                <p:outputLabel for="surname" value="#{label['saveEmployee.label.surname']}" />
+                                <p:inputText id="surname" 
+                                             value="#{employee.surname}" 
+                                             required="true"
+                                             requiredMessage="#{msg['simpleexample.surname']}"/>
+                                <p:message for="surname"/>
+
+                                <p:commandButton value="#{label['saveEmployee.buttons.save']}" 
+                                                 actionListener="#{employee.dummyMethod()}" 
+                                                 update=":apEmployee:formDummy"/>
+                                <!--RESET-->
+                                <p:commandButton value="#{label['saveEmployee.buttons.reset']}"                                             
+                                                 actionListener="#{employee.resetEmployee()}"
+                                                 process="@this"
+                                                 update=":apEmployee:formDummy"
+                                                 /> 
+                            </h:panelGrid>
+                    </p:panel>            
+                </h:form>    
+            </p:tab>
+
+            <p:tab id="employee_tab_02" title="#{label['accordionPanel.secondTabTitle']}">
+                <h:form id="mainForm3">
+                    <p:growl id="fileUploadMessages" showDetail="true" />
+                    <p:fileUpload value="#{fileUploadView.file}" 
+                                  mode="simple" 
+                                  />
+                    <p:commandButton value="Submit" 
+                                     ajax="false" 
+                                     actionListener="#{fileUploadView.upload}" 
+                                     disabled="true" />   
+                </h:form>    
+            </p:tab>
+
+            <p:tab id="employee_tab_03" title="#{label['accordionPanel.thirdTabTitle']}">                
+                <h:form id="employeeForm">                        
+                    <p:dataTable id="datalist" 
+                                 value="#{employee.items}" 
+                                 var="item"
+                                 selectionMode="single" selection="#{employee.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="5"
+                                 rowsPerPageTemplate="5,20,30,40,50">
+                        <p:ajax event="rowSelect"   update="viewButton deleteButton editButton"/>
+                        <p:ajax event="rowUnselect" update="viewButton deleteButton editButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="surname"/>
+                            </f:facet>
+                            <h:outputText value="#{item.surname}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                           
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   
+                                             value="create" 
+                                             actionListener="#{employee.prepareCreate}"
+                                             oncomplete="PF('EmployeeCreateDialog').show()"
+                                             update=":employeeCreateForm"/>                           
+                            
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  
+                                             value="delete" 
+                                             actionListener="#{employee.destroy}" 
+                                             update="datalist,:formGrowl:growlMsg, :apEmployee:employeeForm" 
+                                             disabled="#{empty employee.selected}"/>
+
+                            <p:commandButton id="viewButton"   
+                                             icon="ui-icon-search" 
+                                             value="view"
+                                             oncomplete="PF('EmployeeViewDialog').show()"
+                                             disabled="#{empty employee.selected}"
+                                             update=":employeeViewForm"/>
+
+                            <p:commandButton id="editButton"   
+                                             icon="ui-icon-pencil" 
+                                             value="edit" 
+                                             update=":employeeEditForm" 
+                                             oncomplete="PF('EmployeeEditDialog').show()" 
+                                             disabled="#{empty employee.selected}"/>
+                        </f:facet>
+                    </p:dataTable> 
+                </h:form>    
+            </p:tab>				
+        </p:accordionPanel>
+        
+        
+        <ui:include src="crud_employee/edit.xhtml"/>
+        <ui:include src="crud_employee/view.xhtml"/>
+        <ui:include src="crud_employee/create.xhtml"/>
+        
+    </ui:define>
+</ui:composition>
+
+

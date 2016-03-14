@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+        
+        <h:head>
+            <title>Nerd PrimeFaces</title>
+        </h:head>
+
+        <h:body>
+            <h:form id="loginForm">
+                <p:growl id="growlLogin" showDetail="true" sticky="true" />
+                <h:panelGrid columns="2" cellpadding="5" 
+                             style="position: absolute; top: 150px; left: 500px">
+                    <f:facet name="header" >Login</f:facet>
+                    <h:outputLabel for="username" value="Username:" />
+                    <p:inputText id="username" value="#{loginController.userName}"/>
+
+                    <h:outputLabel for="password" value="Password:" />
+                    <p:password id="password" value="#{loginController.password}" />
+                    <f:facet name="footer">
+                        <p:commandButton action="#{loginController.login}" 
+                                         value="Login" update="growlLogin"/>
+                    </f:facet>    
+                </h:panelGrid>
+            </h:form>
+        </h:body>  
+</html>
+
