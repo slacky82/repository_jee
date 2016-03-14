@@ -1,5 +1,6 @@
 package it.nerd.noob.nerdenum;
 
+//TEST GIT
 public class NerdEnum {
 	public enum UserStatus {
 		PENDING(100,"A"), ACTIVE(200,"B");
