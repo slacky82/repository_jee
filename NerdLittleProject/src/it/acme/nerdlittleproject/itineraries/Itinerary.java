@@ -5,7 +5,8 @@ import java.util.List;
 
 import it.acme.nerdlittleproject.connections.Connection;
 import it.acme.nerdlittleproject.exceptions.InvalidItineraryException;
-//modify in fooBranch
+//modify 1 in fooBranch
+//modify 2 in fooBranch
 public abstract class Itinerary {
 	
 	private List<Connection> connections;
