@@ -12,7 +12,7 @@ public abstract class Itinerary {
 	
 	public Itinerary(){
 		connections = new ArrayList<Connection>();
-	}
+	} 
 	
 	/**	
  	1)un metodo statico makeEmpty che restituisce un itinerario vuoto;
