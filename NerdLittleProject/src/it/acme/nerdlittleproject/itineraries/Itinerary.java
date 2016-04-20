@@ -31,7 +31,7 @@ public abstract class Itinerary {
 	};
 	
 	protected Itinerary add(Connection c){
-		Itinerary dummyEtinerary = new EmptyItinerary();
+		Itinerary dummyEtinerary = makeEmpty();
 		connections.add(c);
 		//TODO un metodo add che prende una connessione c e restituisce un nuovo itinerario 
 	   	//dove la connessione c è stata aggiunta alla fine.	   	
