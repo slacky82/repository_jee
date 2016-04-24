@@ -15,6 +15,8 @@ import it.acme.nerdlittleproject.itineraries.Itinerary;
 
 public class MappyTests {
 	
+	//test last commit
+	
 	private  EmptyItinerary myItinerary;
 	MainRoad myConn1 = new MainRoad();
 	Motorway myConn2 = new Motorway();
