@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		 
+		<p:ajaxStatus onstart="PF('readDialogWidget').show()" 
+			onsuccess="PF('readDialogWidget').hide()" 
+			widgetVar="readDialogWidget" />
+		<p:dialog id="readDialog" widgetVar="readDialogWidget" 
+			modal="true" 
+			draggable="false" 
+			closable="true" 
+			resizable="false" 
+			showHeader="true">    
+    		<p:graphicImage value="/resources/images/ajax-loader.gif" />
+		</p:dialog>
+		
+		<p:accordionPanel dynamic="true" activeIndex="0">
+			<p:ajax event="tabChange" listener="#{fooMB.onChange}" />
+			<p:tab title="#{label['accordionPanel.firstTabTitle']}">
+				<div id="container">
+					<h:panelGrid columns="2">
+						<h:outputText value="Id:" />
+						<p:inputText label="id"  value="#{userMB.id}" />
+						<h:outputText value="Name:" />
+						<p:inputText label="name" value="#{userMB.name}" />
+						<h:outputText value="Surname:" />
+						<p:inputText label="surname" value="#{userMB.surname}" />
+					</h:panelGrid>
+				</div>
+				<div id="buttons">
+					<h:panelGroup>
+                    	<p:commandButton value="#{label['user.buttons.save']}" actionListener="#{userMB.saveUser}" 
+							ajax="true" 
+							update = ":mainForm:growl"  />   
+                    </h:panelGroup>								
+				</div>
+			</p:tab>
+			<p:tab title="#{label['accordionPanel.secondTabTitle']}">
+				<p:inputText value="#{userMB.id}" />
+				<p:commandButton value="Load" actionListener="#{userMB.getUserById}" 
+					ajax="true" 
+					update = ":mainForm:growl"  />	
+			</p:tab>
+			<p:tab title="#{label['accordionPanel.thirdTabTitle']}">
+				huahauhha	
+			</p:tab>				
+		</p:accordionPanel>	   
+	</ui:define>
+</ui:composition>

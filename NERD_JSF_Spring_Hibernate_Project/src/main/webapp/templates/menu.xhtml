@@ -1,0 +1,41 @@
+
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form id="menuForm">
+		<p:outputPanel id="menuPanel" layout="block">
+				<p:menu autoSubmenuDisplay="true" 
+						style="width:213px;height:483px;border:none;font-size:small;padding:0px;"
+						ajax="true" type="sliding" backLabel="#{msg['menu.back']}">
+					
+					<p:submenu label="Pages" icon="ui-icon ui-icon-refresh">
+						<p:menuitem value="page1" action="#{navigationController.processPage1}" 
+							 icon="ui-icon-disk" />							
+						<p:menuitem value="page2" action="#{navigationController.processPage2}" 
+							 icon="ui-icon-close" />	 
+					</p:submenu>
+					
+					<p:submenu label="More Pages" icon="ui-icon ui-icon-refresh">
+						<p:menuitem value="Page 3"
+							action="#{navigationController.showPage}">
+							<f:param name="pageId" value="3"/> 
+						</p:menuitem>
+						<p:menuitem value="Page 4"
+							action="#{navigationController.showPage}">
+							<f:param name="pageId" value="4"/> 
+						</p:menuitem>
+						<p:menuitem value="Page 5"
+							action="#{navigationController.showPage}">
+							<f:param name="pageId" value="5"/> 
+						</p:menuitem>	
+					</p:submenu>		
+				</p:menu>
+		</p:outputPanel>
+	</h:form>
+</ui:composition>
+
+
