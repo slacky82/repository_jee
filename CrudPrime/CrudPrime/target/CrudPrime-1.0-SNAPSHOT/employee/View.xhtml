@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmployeeViewDlg" widgetVar="EmployeeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmployeeTitle}">
+            <h:form id="EmployeeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{employeeController.selected != null}">
+                        <h:outputText value="id"/>
+                        <h:outputText value="#{employeeController.selected.id}" title="#{bundle.ViewEmployeeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEmployeeLabel_name}"/>
+                        <h:outputText value="#{employeeController.selected.name}" title="#{bundle.ViewEmployeeTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewEmployeeLabel_surname}"/>
+                        <h:outputText value="#{employeeController.selected.surname}" title="#{bundle.ViewEmployeeTitle_surname}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EmployeeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

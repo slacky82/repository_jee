@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmployeeEditDlg" widgetVar="EmployeeEditDialog" 
+                  modal="true" resizable="false" appendTo="@(body)" 
+                  header="edit">
+            <h:form id="employeeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{employee.selected != null}">
+                        <p:outputLabel value="name" for="name" />
+                        <p:inputText id="name" 
+                                     value="#{employee.selected.name}" 
+                                     title="name" 
+                                     required="true" 
+                                     requiredMessage="mittc lu nom"/>
+                        <p:outputLabel value="surname" for="surname" />
+                        <p:inputText id="surname" value="#{employee.selected.surname}" 
+                                     title="surname" 
+                                     required="true" 
+                                     requiredMessage="mittc lu congom"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{employee.update}"
+                                     update=":apEmployee:employeeForm, :formGrowl:growlMsg"
+                                     value="save"
+                                     oncomplete="PF('EmployeeEditDialog').hide()"
+                                     />
+                    <p:commandButton value="cancel" onclick="PF('EmployeeEditDialog').hide()" />
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
