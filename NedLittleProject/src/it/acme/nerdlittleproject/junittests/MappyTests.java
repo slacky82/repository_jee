@@ -10,6 +10,7 @@ import it.acme.nerdlittleproject.connections.Connection;
 import it.acme.nerdlittleproject.connections.MainRoad;
 import it.acme.nerdlittleproject.connections.Motorway;
 import it.acme.nerdlittleproject.exception.InvalidItinerary;
+import it.acme.nerdlittleproject.exception.NoSuchItinerary;
 import it.acme.nerdlittleproject.itineraries.EmptyItinerary;
 import it.acme.nerdlittleproject.itineraries.Itinerary;
 
@@ -17,17 +18,15 @@ public class MappyTests {
 	
 	//test last commit
 	
-	private  EmptyItinerary myItinerary;
 	MainRoad myConn1 = new MainRoad();
 	Motorway myConn2 = new Motorway();
 	MainRoad myConn3 = new MainRoad();
 	MainRoad myConn4 = new MainRoad();
+	MainRoad myConn5 = new MainRoad();
 
 
 	@Before
 	public void setUp() throws Exception {
-		
-		myItinerary = Itinerary.makeEmpty();
 
 		myConn1.setFrom("pescara");
 		myConn1.setTo("l'aquila");
@@ -42,34 +41,47 @@ public class MappyTests {
 		myConn2.setPrice(new Float("12.50"));
 		
 		myConn3.setFrom("roma");
-		myConn3.setTo("pescara");
+		myConn3.setTo("teramo");
 		myConn3.setKm(100);
 		myConn3.setTime(60);
 		myConn3.setTrafficLight(true);
 		
-		myConn4.setFrom("palermo");
-		myConn4.setTo("milano");
-		myConn4.setKm(100);
-		myConn4.setTime(60);
-		myConn4.setTrafficLight(true);
+		myConn4.setFrom("roma");
+		myConn4.setTo("teramo");
+		myConn4.setKm(110);
+		myConn4.setTime(50);
+		myConn3.setTrafficLight(false);
 		
+		myConn5.setFrom("teramo");
+		myConn5.setTo("bracciano");
+		myConn5.setKm(100);
+		myConn5.setTime(50);
+		myConn5.setTrafficLight(false);
 	}
 
 	@Test
-	public void test() throws InvalidItinerary {
+	public void test() throws InvalidItinerary, NoSuchItinerary {
 		Mappy dummyMappy = new Mappy();
 		dummyMappy.add(myConn1);
 		dummyMappy.add(myConn2);
+		dummyMappy.addItinerary();
 		dummyMappy.add(myConn3);
-		//dummyMappy.add(myConn4);
+		dummyMappy.add(myConn4);
+		dummyMappy.add(myConn5);
+		dummyMappy.addItinerary();
+		//dummyMappy.add(myConn5);
 		
 		dummyMappy.printItinerary();
 		
-		System.out.println("TOT. TIME: " + dummyMappy.myItinerary.getTime());
-		System.out.println("TOT. KM: " + dummyMappy.myItinerary.getKilometer());
-		System.out.println("TOT. PRICE: " + dummyMappy.myItinerary.getPrice());
+		System.out.println("TOT. TIME: " +  dummyMappy.itineraries.get(0).getTime());
+		System.out.println("TOT. KM: " +    dummyMappy.itineraries.get(0).getKilometer());
+		System.out.println("TOT. PRICE: " + dummyMappy.itineraries.get(0).getPrice());
 		
+		Itinerary itinerary = dummyMappy.getItinerary("pescara", "roma");
+		assertNotNull(itinerary);
 		
 	}
+	
+	
 
 }

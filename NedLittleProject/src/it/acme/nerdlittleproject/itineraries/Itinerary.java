@@ -9,10 +9,10 @@ import it.acme.nerdlittleproject.exception.InvalidItinerary;
 
 public abstract class Itinerary {
 	//check if is right that this is there????
-	private List<ItineraryStep> steps;
+	protected List<ItineraryStep> steps;
 	
 	public Itinerary(){
-		steps = new ArrayList<ItineraryStep>();
+		//steps = new ArrayList<ItineraryStep>();
 	}
 	
 	

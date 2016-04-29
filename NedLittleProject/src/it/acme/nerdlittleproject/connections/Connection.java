@@ -33,5 +33,7 @@ public abstract class Connection {
 	public void setTime(int time) {
 		this.time = time;
 	}
+	
+	
 
 }

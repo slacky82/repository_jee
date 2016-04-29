@@ -1,19 +1,20 @@
 package it.acme.nerdlittleproject.itineraries;
 
-
+import java.util.ArrayList;
 
 public class EmptyItinerary extends Itinerary {
 	
-	private ItineraryStep step;
-
-	public ItineraryStep getStep() {
-		return step;
+	public EmptyItinerary(){
+		steps =  new ArrayList<ItineraryStep>();
 	}
-
-	public void setStep(ItineraryStep step) {
-		this.step = step;
-	}	
 	
-	
-
+//	private ItineraryStep step;
+//
+//	public ItineraryStep getStep() {
+//		return step;
+//	}
+//
+//	public void setStep(ItineraryStep step) {
+//		this.step = step;
+//	}	
 }
