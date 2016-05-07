@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.acme.nerdlittleproject.connections.Connection;
+import it.acme.nerdlittleproject.connections.Expressway;
+import it.acme.nerdlittleproject.connections.MainRoad;
 import it.acme.nerdlittleproject.connections.Motorway;
 import it.acme.nerdlittleproject.exception.InvalidItinerary;
 
@@ -12,7 +14,6 @@ public abstract class Itinerary {
 	protected List<ItineraryStep> steps;
 	
 	public Itinerary(){
-		//steps = new ArrayList<ItineraryStep>();
 	}
 	
 	
@@ -28,11 +29,6 @@ public abstract class Itinerary {
 		steps.add(stepDummy);
 		return stepDummy;
 	}
-	
-	public void update (Connection c) throws InvalidItinerary{
-		
-		
-	}		
 	
 	public float getKilometer(){
 		Float km = new Float(0);
@@ -62,7 +58,6 @@ public abstract class Itinerary {
 		return time;
 	}
 	
-	
 	private void checkItinerary(Connection newConn) throws InvalidItinerary{
 		//passa due volte nella stessa città
 		containsCity(newConn);
@@ -75,7 +70,6 @@ public abstract class Itinerary {
 			}
 		}	
 	}	
-	
 	
 	private void containsCity(Connection conn) throws InvalidItinerary{
 		for (ItineraryStep currStep : steps) {
@@ -93,6 +87,23 @@ public abstract class Itinerary {
 
 	public void setSteps(List<ItineraryStep> steps) {
 		this.steps = steps;
+	}
+	
+	public String toString(){
+		StringBuffer mySB = new StringBuffer();
+		for (ItineraryStep currStep : steps) {
+			mySB = mySB.append(currStep.getConnectionStep().toString());
+		}
+		mySB.append("TOT. TIME: ");
+		mySB.append(getTime());
+		mySB.append("\n");
+		mySB.append("TOT. KM: ");
+		mySB.append(getKilometer());
+		mySB.append("\n");
+		mySB.append("TOT. PRICE: ");
+		mySB.append(getPrice());
+		mySB.append("\n");
+		return mySB.toString();
 	}
 	
 	

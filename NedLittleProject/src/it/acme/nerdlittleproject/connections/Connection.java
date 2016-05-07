@@ -34,6 +34,23 @@ public abstract class Connection {
 		this.time = time;
 	}
 	
+	public String toString(){
+		StringBuffer mySB = new StringBuffer();
+		mySB = mySB.append("from: ");
+		mySB.append(getFrom());
+		mySB.append("\n");
+		mySB.append("to: ");
+		mySB.append(getTo());
+		mySB.append("\n");
+		mySB = mySB.append("km: ");
+		mySB.append(getKm());
+		mySB.append("\n");
+		mySB.append("time: ");
+		mySB.append(getTime());
+		mySB.append("\n");
+		return mySB.toString();
+	}
+	
 	
 
 }

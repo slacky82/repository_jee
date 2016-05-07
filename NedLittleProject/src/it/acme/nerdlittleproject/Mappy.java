@@ -3,6 +3,8 @@ package it.acme.nerdlittleproject;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.core.IsInstanceOf;
+
 import it.acme.nerdlittleproject.connections.Connection;
 import it.acme.nerdlittleproject.connections.Expressway;
 import it.acme.nerdlittleproject.connections.MainRoad;
@@ -13,6 +15,9 @@ import it.acme.nerdlittleproject.itineraries.EmptyItinerary;
 import it.acme.nerdlittleproject.itineraries.Itinerary;
 import it.acme.nerdlittleproject.itineraries.ItineraryStep;
 import it.acme.nerdlittleproject.utils.Compare;
+import it.acme.nerdlittleproject.utils.CompareKm;
+import it.acme.nerdlittleproject.utils.ComparePrice;
+import it.acme.nerdlittleproject.utils.CompareTime;
 
 public class Mappy {
 	
@@ -92,8 +97,42 @@ public class Mappy {
 	 * @param best
 	 * @return
 	 */
-	public Itinerary getItinerary (String cityFrom, String cityTo, Compare best){
-		return null;		
+	public Itinerary getItinerary (String cityFrom, String cityTo, Compare best)throws NoSuchItinerary{
+		Itinerary dummyItinerary = null;
+		for (Itinerary currItinerary : itineraries) {
+			if(!currItinerary.getSteps().isEmpty()){
+				int indexLastConn = currItinerary.getSteps().size() - 1;
+				Connection start = currItinerary.getSteps().get(0).getConnectionStep();
+				Connection end = currItinerary.getSteps().get(indexLastConn).getConnectionStep();
+				if(start.getFrom().equalsIgnoreCase(cityFrom) && end.getTo().equalsIgnoreCase(cityTo)){
+					//return currItinerary;
+					if(dummyItinerary == null){
+						dummyItinerary = currItinerary;
+					}
+					if(best instanceof CompareKm){
+						if(best.isBetter(currItinerary, dummyItinerary)){
+							dummyItinerary = currItinerary;
+						}
+					}
+					if(best instanceof ComparePrice){
+						if(best.isBetter(currItinerary, dummyItinerary)){
+							dummyItinerary = currItinerary;
+						}
+					}
+					if(best instanceof CompareTime){
+						if(best.isBetter(currItinerary, dummyItinerary)){
+							dummyItinerary = currItinerary;
+						}
+					}
+				}
+			}
+		}
+		if(dummyItinerary == null){
+			throw new NoSuchItinerary("this itinerary does not contains this step");
+		}
+		else{
+			return dummyItinerary;
+		}
 	}
 	
 	
@@ -109,6 +148,14 @@ public class Mappy {
 		return -1;		
 	}
 	
+	public void printItineraryDummy(){
+		int i = 0;
+		for (Itinerary currItinerary : itineraries) {
+			System.out.println("ITINERARY N* " +  i++);
+			System.out.println(currItinerary.toString());
+			System.out.println("---------------");
+		}
+	}
 	
 	public void printItinerary(){
 		int i = 0;
@@ -136,8 +183,12 @@ public class Mappy {
 					System.out.println("NUMBER: " + conn.getNumber());
 					System.out.println("PRICE: " + conn.getPrice());
 				}
-				System.out.println("#############\n");
+				System.out.println("#############");
 			}
+			System.out.println("TOT. TIME: " +  currItinerary.getTime());
+			System.out.println("TOT. KM: " +    currItinerary.getKilometer());
+			System.out.println("TOT. PRICE: " + currItinerary.getPrice());
+			System.out.println("\n\n--------------------");
 		}
 	}
 

@@ -18,6 +18,22 @@ public class Expressway extends Connection {
 		this.safe = safe;
 	}
 	
+	public String toString(){
+		StringBuffer mySB = new StringBuffer();
+		mySB = mySB.append("type: ");
+		mySB = mySB.append(this.getClass().getTypeName());
+		mySB.append("\n");
+		mySB = mySB.append(super.toString());
+		mySB = mySB.append("name: ");
+		mySB.append(getName());
+		mySB.append("\n");
+		mySB.append("safe: ");
+		mySB.append(getSafe());
+		mySB.append("\n");
+		mySB.append("#################\n");
+		return mySB.toString();
+	}
+	
 	
 
 }

@@ -13,13 +13,17 @@ import it.acme.nerdlittleproject.exception.InvalidItinerary;
 import it.acme.nerdlittleproject.exception.NoSuchItinerary;
 import it.acme.nerdlittleproject.itineraries.EmptyItinerary;
 import it.acme.nerdlittleproject.itineraries.Itinerary;
+import it.acme.nerdlittleproject.utils.CompareKm;
+import it.acme.nerdlittleproject.utils.CompareTime;
 
 public class MappyTests {
 	
 	//test last commit
 	
 	MainRoad myConn1 = new MainRoad();
+	MainRoad myConn1a = new MainRoad();
 	Motorway myConn2 = new Motorway();
+	Motorway myConn2a = new Motorway();
 	MainRoad myConn3 = new MainRoad();
 	MainRoad myConn4 = new MainRoad();
 	MainRoad myConn5 = new MainRoad();
@@ -40,6 +44,21 @@ public class MappyTests {
 		myConn2.setTime(60);
 		myConn2.setPrice(new Float("12.50"));
 		
+		//-----------
+		myConn1a.setFrom("pescara");
+		myConn1a.setTo("l'aquila");
+		myConn1a.setKm(100);
+		myConn1a.setTime(30);
+		myConn1a.setTrafficLight(false);
+		
+		myConn2a.setFrom("l'aquila");
+		myConn2a.setTo("roma");
+		myConn2a.setKm(100);
+		myConn2a.setTime(60);
+		myConn2a.setPrice(new Float("12.50"));
+				
+		//-----------
+		
 		myConn3.setFrom("roma");
 		myConn3.setTo("teramo");
 		myConn3.setKm(100);
@@ -57,6 +76,8 @@ public class MappyTests {
 		myConn5.setKm(100);
 		myConn5.setTime(50);
 		myConn5.setTrafficLight(false);
+		
+		
 	}
 
 	@Test
@@ -65,21 +86,25 @@ public class MappyTests {
 		dummyMappy.add(myConn1);
 		dummyMappy.add(myConn2);
 		dummyMappy.addItinerary();
+		
+		dummyMappy.add(myConn1a);
+		dummyMappy.add(myConn2a);
+		dummyMappy.addItinerary();
+		
 		dummyMappy.add(myConn3);
 		dummyMappy.add(myConn4);
 		dummyMappy.add(myConn5);
 		dummyMappy.addItinerary();
-		//dummyMappy.add(myConn5);
 		
-		dummyMappy.printItinerary();
-		
-		System.out.println("TOT. TIME: " +  dummyMappy.itineraries.get(0).getTime());
-		System.out.println("TOT. KM: " +    dummyMappy.itineraries.get(0).getKilometer());
-		System.out.println("TOT. PRICE: " + dummyMappy.itineraries.get(0).getPrice());
-		
+		//dummyMappy.printItineraryDummy();
+
 		Itinerary itinerary = dummyMappy.getItinerary("pescara", "roma");
-		assertNotNull(itinerary);
+		Itinerary itinerary2 = dummyMappy.getItinerary("pescara", "roma", new CompareTime());
+		System.out.println(itinerary2.toString());
 		
+		assertNotNull(itinerary);
+		assertNotNull(itinerary2);
+		assertTrue(itinerary2.getTime() == 90);
 	}
 	
 	

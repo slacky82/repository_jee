@@ -5,6 +5,7 @@ import it.acme.nerdlittleproject.connections.Connection;
 public class ItineraryStep extends Itinerary {
 	
 	private Connection connectionStep;
+	//what does it do?
 	private Itinerary itinerary;
 	
 	//getter setter
