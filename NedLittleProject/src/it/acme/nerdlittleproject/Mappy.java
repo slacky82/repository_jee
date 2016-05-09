@@ -3,8 +3,6 @@ package it.acme.nerdlittleproject;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hamcrest.core.IsInstanceOf;
-
 import it.acme.nerdlittleproject.connections.Connection;
 import it.acme.nerdlittleproject.connections.Expressway;
 import it.acme.nerdlittleproject.connections.MainRoad;
@@ -21,47 +19,43 @@ import it.acme.nerdlittleproject.utils.CompareTime;
 
 public class Mappy {
 	
-	//should be a list of itineraries???!?!?!√ü
-	private Itinerary myItinerary = new EmptyItinerary();
-	
-	public  List<Itinerary> itineraries;
-	
+	private Itinerary currItinerary = new EmptyItinerary();
+	private List<Itinerary> allItineraries;
 	
 	public Mappy(){
-		itineraries = new ArrayList<Itinerary>();
+		allItineraries = new ArrayList<Itinerary>();
 	}
-	
 
 	/**
 	 * prende una nuova connessione e restituisce void,
-	 * in modo tale che la nuova connessione pu√≤ essere utilizzata per
+	 * in modo tale che la nuova connessione puÚ essere utilizzata per
 	 * costruire itinerari.
-	 * Se una connessione dello stesso tipo fra le stesse citt√† esiste gi√†,
+	 * Se una connessione dello stesso tipo fra le stesse citt‡† esiste gi‡†,
 	 * l'aggiunta corrisponde ad un aggiornamento,
 	 * ovvero la nuova connessione sostituisce la precedente.
 	 * @param c
 	 * @throws InvalidItinerary
 	 */
 	public void add(Connection c) throws InvalidItinerary {
-		if(myItinerary.getSteps().isEmpty()){
-			myItinerary.add(c);
+		if(currItinerary.getSteps().isEmpty()){
+			currItinerary.add(c);
 		}
 		else {
 			int index = getIndexConnection(c);
 			if(index != -1){
 				//UPDATE
-				myItinerary.getSteps().get(index).setConnectionStep(c);
+				currItinerary.getSteps().get(index).setConnectionStep(c);
 			}
 			else{
 				//INSERT
-				myItinerary.add(c);
+				currItinerary.add(c);
 			}
 		}
 	}
 	
 	public void addItinerary(){
-		itineraries.add(myItinerary);
-		myItinerary = new EmptyItinerary();
+		allItineraries.add(currItinerary);
+		currItinerary = Itinerary.makeEmpty();
 	}
 	
 	/**
@@ -75,7 +69,7 @@ public class Mappy {
 	 * @throws NoSuchItinerary 
 	 */
 	public Itinerary getItinerary(String cityFrom, String cityTo) throws NoSuchItinerary{
-		for (Itinerary currItinerary : itineraries) {
+		for (Itinerary currItinerary : allItineraries) {
 			if(!currItinerary.getSteps().isEmpty()){
 				int indexLastConn = currItinerary.getSteps().size() - 1;
 				Connection start = currItinerary.getSteps().get(0).getConnectionStep();
@@ -99,7 +93,7 @@ public class Mappy {
 	 */
 	public Itinerary getItinerary (String cityFrom, String cityTo, Compare best)throws NoSuchItinerary{
 		Itinerary dummyItinerary = null;
-		for (Itinerary currItinerary : itineraries) {
+		for (Itinerary currItinerary : allItineraries) {
 			if(!currItinerary.getSteps().isEmpty()){
 				int indexLastConn = currItinerary.getSteps().size() - 1;
 				Connection start = currItinerary.getSteps().get(0).getConnectionStep();
@@ -137,7 +131,7 @@ public class Mappy {
 	
 	
 	private int getIndexConnection(Connection c){
-		List<ItineraryStep> listIS = myItinerary.getSteps();
+		List<ItineraryStep> listIS = currItinerary.getSteps();
 		for(int index = 0; index < listIS.size(); index++ ){
 			Connection conn = listIS.get(index).getConnectionStep();
 			if(conn.getFrom().equalsIgnoreCase(c.getFrom()) && conn.getTo().equalsIgnoreCase(c.getTo()) && 
@@ -150,7 +144,7 @@ public class Mappy {
 	
 	public void printItineraryDummy(){
 		int i = 0;
-		for (Itinerary currItinerary : itineraries) {
+		for (Itinerary currItinerary : allItineraries) {
 			System.out.println("ITINERARY N* " +  i++);
 			System.out.println(currItinerary.toString());
 			System.out.println("---------------");
@@ -159,7 +153,7 @@ public class Mappy {
 	
 	public void printItinerary(){
 		int i = 0;
-		for (Itinerary currItinerary : itineraries) {
+		for (Itinerary currItinerary : allItineraries) {
 			System.out.println("ITINERARY N* " +  i++);
 			List<ItineraryStep> steps =  currItinerary.getSteps();
 			for (ItineraryStep currStep : steps) {

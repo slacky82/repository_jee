@@ -3,7 +3,9 @@ package it.acme.nerdlittleproject.junittests;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import it.acme.nerdlittleproject.Mappy;
 import it.acme.nerdlittleproject.connections.Connection;
@@ -18,8 +20,6 @@ import it.acme.nerdlittleproject.utils.CompareTime;
 
 public class MappyTests {
 	
-	//test last commit
-	
 	MainRoad myConn1 = new MainRoad();
 	MainRoad myConn1a = new MainRoad();
 	Motorway myConn2 = new Motorway();
@@ -27,7 +27,7 @@ public class MappyTests {
 	MainRoad myConn3 = new MainRoad();
 	MainRoad myConn4 = new MainRoad();
 	MainRoad myConn5 = new MainRoad();
-
+	MainRoad myConn6 = new MainRoad();
 
 	@Before
 	public void setUp() throws Exception {
@@ -47,7 +47,7 @@ public class MappyTests {
 		//-----------
 		myConn1a.setFrom("pescara");
 		myConn1a.setTo("l'aquila");
-		myConn1a.setKm(100);
+		myConn1a.setKm(90);
 		myConn1a.setTime(30);
 		myConn1a.setTrafficLight(false);
 		
@@ -56,7 +56,7 @@ public class MappyTests {
 		myConn2a.setKm(100);
 		myConn2a.setTime(60);
 		myConn2a.setPrice(new Float("12.50"));
-				
+		
 		//-----------
 		
 		myConn3.setFrom("roma");
@@ -65,26 +65,72 @@ public class MappyTests {
 		myConn3.setTime(60);
 		myConn3.setTrafficLight(true);
 		
-		myConn4.setFrom("roma");
-		myConn4.setTo("teramo");
+		myConn4.setFrom("teramo");
+		myConn4.setTo("bracciano");
 		myConn4.setKm(110);
 		myConn4.setTime(50);
-		myConn3.setTrafficLight(false);
+		myConn4.setTrafficLight(false);
 		
 		myConn5.setFrom("teramo");
 		myConn5.setTo("bracciano");
-		myConn5.setKm(100);
-		myConn5.setTime(50);
+		myConn5.setKm(150);
+		myConn5.setTime(110);
 		myConn5.setTrafficLight(false);
+		
+		myConn6.setFrom("bracciano");
+		myConn6.setTo("teramo");
+		myConn6.setKm(150);
+		myConn6.setTime(110);
+		myConn6.setTrafficLight(false);
 		
 		
 	}
-
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
+	
+	@Test
+	public void itineraryNotLinked() throws InvalidItinerary, NoSuchItinerary {
+		Mappy dummyMappy = new Mappy();
+		dummyMappy.add(myConn1);
+		dummyMappy.add(myConn2);
+		exception.expect(InvalidItinerary.class);
+		exception.expectMessage("itinerary does not linked");
+		dummyMappy.add(myConn5);
+	}
+	
+	@Test
+	public void itinerarySameCity() throws InvalidItinerary, NoSuchItinerary {
+		Mappy dummyMappy = new Mappy();
+		dummyMappy.add(myConn3);
+		dummyMappy.add(myConn4);
+		dummyMappy.add(myConn6);
+		
+		dummyMappy.addItinerary();
+		exception.expect(InvalidItinerary.class);
+		exception.expectMessage("itinerary goes two times in the same city");
+		dummyMappy.add(myConn5);
+	}
+	
+	
+	
+	@Test
+	public void findItinerary() throws InvalidItinerary, NoSuchItinerary {
+		Mappy dummyMappy = new Mappy();
+		dummyMappy.add(myConn1);
+		dummyMappy.add(myConn2);
+		dummyMappy.add(myConn1a);
+		dummyMappy.add(myConn2a);
+		dummyMappy.addItinerary();
+		exception.expect(NoSuchItinerary.class);
+		exception.expectMessage("this itinerary does not contains this step");
+		Itinerary dummyItinerary = dummyMappy.getItinerary("foo", "bar", new CompareTime());
+	}	
+	
 	@Test
 	public void test() throws InvalidItinerary, NoSuchItinerary {
 		Mappy dummyMappy = new Mappy();
 		dummyMappy.add(myConn1);
-		dummyMappy.add(myConn2);
+		dummyMappy.add(myConn2);		
 		dummyMappy.addItinerary();
 		
 		dummyMappy.add(myConn1a);
@@ -96,17 +142,16 @@ public class MappyTests {
 		dummyMappy.add(myConn5);
 		dummyMappy.addItinerary();
 		
-		//dummyMappy.printItineraryDummy();
+		dummyMappy.printItineraryDummy();
 
 		Itinerary itinerary = dummyMappy.getItinerary("pescara", "roma");
 		Itinerary itinerary2 = dummyMappy.getItinerary("pescara", "roma", new CompareTime());
-		System.out.println(itinerary2.toString());
+		
+		//System.out.println(itinerary2.toString());
 		
 		assertNotNull(itinerary);
 		assertNotNull(itinerary2);
 		assertTrue(itinerary2.getTime() == 90);
+		assertTrue(itinerary.getTime() == 120);
 	}
-	
-	
-
 }

@@ -15,8 +15,7 @@ public abstract class Itinerary {
 	
 	public Itinerary(){
 	}
-	
-	
+
 	//un metodo statico makeEmpty che restituisce un itinerario vuoto;
 	public static EmptyItinerary makeEmpty(){
 		return new EmptyItinerary();		
@@ -59,7 +58,7 @@ public abstract class Itinerary {
 	}
 	
 	private void checkItinerary(Connection newConn) throws InvalidItinerary{
-		//passa due volte nella stessa citt√†
+		//passa due volte nella stessa citt‡
 		containsCity(newConn);
 		
 		//itinerario non continuo
