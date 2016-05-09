@@ -103,15 +103,10 @@ public class MappyTests {
 		Mappy dummyMappy = new Mappy();
 		dummyMappy.add(myConn3);
 		dummyMappy.add(myConn4);
-		dummyMappy.add(myConn6);
-		
-		dummyMappy.addItinerary();
 		exception.expect(InvalidItinerary.class);
 		exception.expectMessage("itinerary goes two times in the same city");
-		dummyMappy.add(myConn5);
+		dummyMappy.add(myConn6);		
 	}
-	
-	
 	
 	@Test
 	public void findItinerary() throws InvalidItinerary, NoSuchItinerary {
@@ -127,7 +122,7 @@ public class MappyTests {
 	}	
 	
 	@Test
-	public void test() throws InvalidItinerary, NoSuchItinerary {
+	public void compareItinerary() throws InvalidItinerary, NoSuchItinerary {
 		Mappy dummyMappy = new Mappy();
 		dummyMappy.add(myConn1);
 		dummyMappy.add(myConn2);		
@@ -148,9 +143,9 @@ public class MappyTests {
 		Itinerary itinerary2 = dummyMappy.getItinerary("pescara", "roma", new CompareTime());
 		
 		//System.out.println(itinerary2.toString());
-		
 		assertNotNull(itinerary);
 		assertNotNull(itinerary2);
+		assertTrue(!itinerary.equals(itinerary2));
 		assertTrue(itinerary2.getTime() == 90);
 		assertTrue(itinerary.getTime() == 120);
 	}
