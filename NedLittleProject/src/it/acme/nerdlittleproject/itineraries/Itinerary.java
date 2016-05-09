@@ -17,11 +17,11 @@ public abstract class Itinerary {
 	}
 
 	//un metodo statico makeEmpty che restituisce un itinerario vuoto;
-	public static EmptyItinerary makeEmpty(){
+	public static final EmptyItinerary makeEmpty(){
 		return new EmptyItinerary();		
 	}
 	
-	public Itinerary add(Connection c) throws InvalidItinerary{				
+	public final Itinerary add(Connection c) throws InvalidItinerary{				
 		checkItinerary(c);
 		ItineraryStep stepDummy = new ItineraryStep();
 		stepDummy.setConnectionStep(c);
@@ -29,7 +29,7 @@ public abstract class Itinerary {
 		return stepDummy;
 	}
 	
-	public float getKilometer(){
+	public final float getKilometer(){
 		Float km = new Float(0);
 		for (ItineraryStep itineraryStep : steps) {
 			km = km + itineraryStep.getConnectionStep().getKm();
@@ -37,7 +37,7 @@ public abstract class Itinerary {
 		return km;
 	}
 	
-	public Float getPrice(){
+	public final Float getPrice(){
 		Float price = new Float(0);		
 		for (ItineraryStep itineraryStep : steps) {		
 			
@@ -49,7 +49,7 @@ public abstract class Itinerary {
 		return price;
 	}
 	
-	public int getTime(){
+	public final int getTime(){
 		int time = 0;
 		for (ItineraryStep itineraryStep : steps) {
 			time = time + itineraryStep.getConnectionStep().getTime();
@@ -57,7 +57,7 @@ public abstract class Itinerary {
 		return time;
 	}
 	
-	private void checkItinerary(Connection newConn) throws InvalidItinerary{
+	private  void checkItinerary(Connection newConn) throws InvalidItinerary{
 		//passa due volte nella stessa città
 		containsCity(newConn);
 		
@@ -78,13 +78,11 @@ public abstract class Itinerary {
 		}
 	}
 
-
-	public List<ItineraryStep> getSteps() {
+	public final List<ItineraryStep> getSteps() {
 		return steps;
 	}
 
-
-	public void setSteps(List<ItineraryStep> steps) {
+	public final void setSteps(List<ItineraryStep> steps) {
 		this.steps = steps;
 	}
 	

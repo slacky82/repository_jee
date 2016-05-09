@@ -1,40 +1,69 @@
 package it.acme.nerdlittleproject.connections;
 
 public abstract class Connection {
-	private String from;
-	private String to;
-	private float km;
-	private int time;
+	private  String from;
+	private  String to;
+	private  float km;
+	private  int time;
 	
 	
-	//getters setters
 	
-	public String getFrom() {
+	
+	/**
+	 * @return from
+	 */
+	public final String getFrom() {
 		return from;
 	}
-	public void setFrom(String from) {
+	/**
+	 * @param from
+	 */
+	public final void setFrom(String from) {
 		this.from = from;
 	}
-	public String getTo() {
+	/**
+	 * 
+	 * @return
+	 */
+	public final String  getTo() {
 		return to;
 	}
-	public void setTo(String to) {
+	/**
+	 * 
+	 * @param to
+	 */
+	public final void setTo(String to) {
 		this.to = to;
 	}
-	public float getKm() {
+	/**
+	 * 
+	 * @return
+	 */
+	public final float getKm() {
 		return km;
 	}
-	public void setKm(float km) {
+	public final void setKm(float km) {
 		this.km = km;
 	}
-	public int getTime() {
+	/**
+	 * 
+	 * @return
+	 */
+	public final int  getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	/**
+	 * 
+	 * @param time
+	 */
+	public final void setTime(int time) {
 		this.time = time;
 	}
 	
-	public String toString(){
+	/**
+	 * 
+	 */
+	public  String toString(){
 		StringBuffer mySB = new StringBuffer();
 		mySB = mySB.append("from: ");
 		mySB.append(getFrom());
@@ -50,7 +79,5 @@ public abstract class Connection {
 		mySB.append("\n");
 		return mySB.toString();
 	}
-	
-	
 
 }

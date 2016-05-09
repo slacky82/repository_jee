@@ -9,6 +9,7 @@ import org.junit.rules.ExpectedException;
 
 import it.acme.nerdlittleproject.Mappy;
 import it.acme.nerdlittleproject.connections.Connection;
+import it.acme.nerdlittleproject.connections.Expressway;
 import it.acme.nerdlittleproject.connections.MainRoad;
 import it.acme.nerdlittleproject.connections.Motorway;
 import it.acme.nerdlittleproject.exception.InvalidItinerary;
@@ -28,7 +29,7 @@ public class MappyTests {
 	MainRoad myConn4 = new MainRoad();
 	MainRoad myConn5 = new MainRoad();
 	MainRoad myConn6 = new MainRoad();
-
+	Expressway myConn7 = new Expressway();
 	@Before
 	public void setUp() throws Exception {
 
@@ -83,6 +84,13 @@ public class MappyTests {
 		myConn6.setTime(110);
 		myConn6.setTrafficLight(false);
 		
+		//--
+		myConn7.setFrom("bracciano");
+		myConn7.setTo("fiuggi");
+		myConn7.setKm(200);
+		myConn7.setName("A24");
+		myConn7.setSafe(3.0f);
+		myConn7.setTime(120);
 		
 	}
 	@Rule
@@ -135,6 +143,7 @@ public class MappyTests {
 		dummyMappy.add(myConn3);
 		dummyMappy.add(myConn4);
 		dummyMappy.add(myConn5);
+		dummyMappy.add(myConn7);
 		dummyMappy.addItinerary();
 		
 		dummyMappy.printItineraryDummy();

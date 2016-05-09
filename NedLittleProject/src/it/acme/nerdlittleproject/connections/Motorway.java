@@ -7,16 +7,16 @@ public class Motorway extends Connection {
 	
 	//getter setter
 	
-	public int getNumber() {
+	public final int getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public final void setNumber(int number) {
 		this.number = number;
 	}
-	public float getPrice() {
+	public final float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public final void setPrice(float price) {
 		this.price = price;
 	}
 	
