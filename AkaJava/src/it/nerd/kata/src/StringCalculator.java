@@ -1,8 +1,17 @@
 package it.nerd.kata.src;
 
+import java.awt.datatransfer.StringSelection;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
 public class StringCalculator {
+	private static String currNumber;
+
 	/*TEST_GIT*/
 	/**
 	 * The method can take 0, 1 or 2 numbers, 
@@ -36,5 +45,41 @@ public class StringCalculator {
 			return 0;
 		}
 	}	
+	
+	public static int Add2(String text) {
+		String[] numbers = null;
+		List<Long> negativeNnmbers = new ArrayList<Long>();
+		try {
+			if (StringUtils.contains(text, "//") && StringUtils.indexOf(text, "//") == 0) {
+				char delimiter = text.charAt(2);
+				text = StringUtils.replace(text, Character.toString(delimiter), ",");
+			}
+			
+			text = StringUtils.replace(text, "\n", ",");
+			numbers = text.split(",");
+			if (text.isEmpty()) {
+				return 0;
+			}
+			
+			if (numbers.length == 1) {
+				return new Integer(Integer.valueOf(numbers[0]));
+			}
+			int tot = 0;
+			for (String currNumber : numbers) {
+				if (!NumberUtils.isNumber(currNumber)) {
+					continue;
+				}
+				if(Integer.valueOf(currNumber) < 0){
+					throw new RuntimeException("negatives not allowed: ");
+				}
+				int currParsedNumber = Integer.valueOf(currNumber);
+				tot = tot + currParsedNumber;
+			}
+			
+			return tot;
+		} catch (NumberFormatException ex) {
+			return 0;
+		}
+	}
 
 }
