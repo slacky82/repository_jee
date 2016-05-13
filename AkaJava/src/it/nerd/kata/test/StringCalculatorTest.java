@@ -57,4 +57,18 @@ public class StringCalculatorTest {
 		StringCalculator sc = new StringCalculator();
 		sc.Add2(new String("//;\n-1;2; -3"));
 	}
+	@Test
+	public void ignoreBigNumber(){
+		StringCalculator sc = new StringCalculator();
+		assertEquals(2, sc.Add2("2,1001"));
+	}
+	
+	@Test
+	////[***]\n1***2***3
+	public void delimitersWithAnyLength(){
+		StringCalculator sc = new StringCalculator();
+		assertEquals(6, sc.Add2("//***\n1***2***3"));
+	}
+	
+	
 }

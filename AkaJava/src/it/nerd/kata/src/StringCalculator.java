@@ -45,14 +45,32 @@ public class StringCalculator {
 	}
 
 	private String clearString(String text) {
-		String dummyString = text.trim();
-		dummyString = StringUtils.replace(text, "\n", ",");
+		String dummyString = StringUtils.replace(text, "\n", ",");		
 		dummyString = dummyString.replaceAll("\\s+","");
-		if (StringUtils.contains(text, "//") && StringUtils.indexOf(text, "//") == 0) {
-			char delimiter = text.charAt(2);
-			dummyString = StringUtils.replace(dummyString, Character.toString(delimiter), ",");
+//		if (StringUtils.contains(text, "//") && StringUtils.indexOf(text, "//") == 0) {
+//			char delimiter = text.charAt(2);
+//			dummyString = StringUtils.replace(dummyString, Character.toString(delimiter), ",");
+//		}
+		String delimiter = getDelimiter(dummyString);
+		if(delimiter != null){
+			dummyString = StringUtils.replace(dummyString, delimiter, ",");
 		}
 		return dummyString;
+	}
+	
+	private String getDelimiter(String text){
+		if (StringUtils.contains(text, "//") && StringUtils.indexOf(text, "//") == 0) {
+			Character delimiterDummy = text.charAt(2); 
+			int end;
+			for(end = 2; end<text.length(); end++){
+				Character currItem = text.charAt(end);
+				if(!currItem.equals(delimiterDummy)){
+					break;
+				}
+			}
+			return text.substring(2, end);
+		}
+		return null;
 	}
 
 	public int Add2(String text) {
@@ -72,6 +90,9 @@ public class StringCalculator {
 		int tot = 0;
 		for (String currNumber : numbers) {
 			if (!NumberUtils.isNumber(currNumber)) {
+				continue;
+			}
+			if(Integer.valueOf(currNumber) > 1000){
 				continue;
 			}
 			if (Integer.valueOf(currNumber) < 0) {
