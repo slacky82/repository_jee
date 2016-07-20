@@ -6,6 +6,7 @@ public class VelocityTest {
 
 	//checkin 1
 	//checkin 2
+	//checkin 3
 	
 	
 	public static void main(String[] args) {
