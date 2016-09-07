@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="it.acme.nerdlittleproject.Mappy"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="it.acme.nerdlittleproject.itineraries.EmptyItinerary"/>
 <fullyQualifiedTypeName name="it.acme.nerdlittleproject.itineraries.ItineraryStep"/>
 <fullyQualifiedTypeName name="it.acme.nerdlittleproject.connections.Expressway"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.function.Consumer"/>
 </qualifiedTypeNameHistroy>

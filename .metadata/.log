@@ -284,3 +284,61 @@ Caused by: org.eclipse.jgit.errors.NoRemoteRepositoryException: https://slackyre
 	at org.eclipse.jgit.transport.Transport.push(Transport.java:1200)
 	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:157)
 	... 4 more
+!SESSION 2016-08-10 19:53:35.009 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-08-10 19:53:45.950
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-09-05 19:42:13.879 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-05 19:43:56.330
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-09-07 18:32:26.071 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/slacky/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-07 18:33:00.687
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-09-07 20:15:12.358
+!MESSAGE An internal error occurred
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: No changes
+	at org.eclipse.jgit.api.CommitCommand.createTemporaryIndex(CommitCommand.java:456)
+	at org.eclipse.jgit.api.CommitCommand.call(CommitCommand.java:223)
+	at org.eclipse.egit.core.op.CommitOperation.commit(CommitOperation.java:246)
+	at org.eclipse.egit.core.op.CommitOperation.access$5(CommitOperation.java:235)
+	at org.eclipse.egit.core.op.CommitOperation$1.run(CommitOperation.java:198)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.CommitOperation.execute(CommitOperation.java:208)
+	at org.eclipse.egit.ui.internal.commit.CommitJob.run(CommitJob.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-09-07 20:17:50.010
+!MESSAGE An internal error occurred
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: No changes
+	at org.eclipse.jgit.api.CommitCommand.createTemporaryIndex(CommitCommand.java:456)
+	at org.eclipse.jgit.api.CommitCommand.call(CommitCommand.java:223)
+	at org.eclipse.egit.core.op.CommitOperation.commit(CommitOperation.java:246)
+	at org.eclipse.egit.core.op.CommitOperation.access$5(CommitOperation.java:235)
+	at org.eclipse.egit.core.op.CommitOperation$1.run(CommitOperation.java:198)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.CommitOperation.execute(CommitOperation.java:208)
+	at org.eclipse.egit.ui.internal.commit.CommitJob.run(CommitJob.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
