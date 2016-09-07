@@ -342,3 +342,56 @@ org.eclipse.jgit.api.errors.JGitInternalException: No changes
 	at org.eclipse.egit.core.op.CommitOperation.execute(CommitOperation.java:208)
 	at org.eclipse.egit.ui.internal.commit.CommitJob.run(CommitJob.java:98)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-09-07 20:34:13.171
+!MESSAGE An internal error occurred
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: No changes
+	at org.eclipse.jgit.api.CommitCommand.createTemporaryIndex(CommitCommand.java:456)
+	at org.eclipse.jgit.api.CommitCommand.call(CommitCommand.java:223)
+	at org.eclipse.egit.core.op.CommitOperation.commit(CommitOperation.java:246)
+	at org.eclipse.egit.core.op.CommitOperation.access$5(CommitOperation.java:235)
+	at org.eclipse.egit.core.op.CommitOperation$1.run(CommitOperation.java:198)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.CommitOperation.execute(CommitOperation.java:208)
+	at org.eclipse.egit.ui.internal.commit.CommitJob.run(CommitJob.java:98)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.core 4 0 2016-09-07 20:36:31.150
+!MESSAGE Ignoring /NedLittleProject/bin/it failed
+!STACK 0
+java.io.IOException: File not found: /Users/slacky/slackyrepository_repjeenew/NedLittleProject/bin/.gitignore.
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:392)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1216)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:651)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:619)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:599)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:586)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:609)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources$1.visit(Activator.java:586)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:63)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:47)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources.resourceChanged(Activator.java:562)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1470)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /Users/slacky/slackyrepository_repjeenew/NedLittleProject/bin/.gitignore.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:49)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:391)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:834)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:269)
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:390)
+	... 21 more
+Caused by: java.io.FileNotFoundException: /Users/slacky/slackyrepository_repjeenew/NedLittleProject/bin/.gitignore (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:382)
+	... 24 more
