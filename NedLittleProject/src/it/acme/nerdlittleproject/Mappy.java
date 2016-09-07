@@ -28,9 +28,9 @@ public class Mappy {
 
 	/**
 	 * prende una nuova connessione e restituisce void,
-	 * in modo tale che la nuova connessione può essere utilizzata per
+	 * in modo tale che la nuova connessione puï¿½ essere utilizzata per
 	 * costruire itinerari.
-	 * Se una connessione dello stesso tipo fra le stesse città  esiste già ,
+	 * Se una connessione dello stesso tipo fra le stesse cittï¿½ esiste giï¿½,
 	 * l'aggiunta corrisponde ad un aggiornamento,
 	 * ovvero la nuova connessione sostituisce la precedente.
 	 * @param c
@@ -99,24 +99,11 @@ public class Mappy {
 				Connection start = currItinerary.getSteps().get(0).getConnectionStep();
 				Connection end = currItinerary.getSteps().get(indexLastConn).getConnectionStep();
 				if(start.getFrom().equalsIgnoreCase(cityFrom) && end.getTo().equalsIgnoreCase(cityTo)){
-					//return currItinerary;
 					if(dummyItinerary == null){
 						dummyItinerary = currItinerary;
 					}
-					if(best instanceof CompareKm){
-						if(best.isBetter(currItinerary, dummyItinerary)){
-							dummyItinerary = currItinerary;
-						}
-					}
-					if(best instanceof ComparePrice){
-						if(best.isBetter(currItinerary, dummyItinerary)){
-							dummyItinerary = currItinerary;
-						}
-					}
-					if(best instanceof CompareTime){
-						if(best.isBetter(currItinerary, dummyItinerary)){
-							dummyItinerary = currItinerary;
-						}
+					if(best.isBetter(currItinerary, dummyItinerary)){
+						dummyItinerary = currItinerary;
 					}
 				}
 			}
@@ -162,27 +149,29 @@ public class Mappy {
 				System.out.println("TO: " + currStep.getConnectionStep().getTo());
 				System.out.println("TIME: " + currStep.getConnectionStep().getTime());
 				System.out.println("KM : " + currStep.getConnectionStep().getKm());
-				if ( currStep.getConnectionStep() instanceof Expressway){
-					Expressway conn = (Expressway) currStep.getConnectionStep();
-					System.out.println("NAME: " + conn.getName());
-					System.out.println("SAFE: " + conn.getSafe());
-				}
-				if ( currStep.getConnectionStep() instanceof MainRoad){
-					MainRoad conn = (MainRoad) currStep.getConnectionStep();
-					System.out.println("NUMBER: " + conn.getNumber());
-					System.out.println("TRAFFIC LIGHT:" + conn.isTrafficLight());
-				}
-				if ( currStep.getConnectionStep() instanceof Motorway){
-					Motorway conn = (Motorway) currStep.getConnectionStep();
-					System.out.println("NUMBER: " + conn.getNumber());
-					System.out.println("PRICE: " + conn.getPrice());
-				}
+				print(currStep.getConnectionStep());
 				System.out.println("#############");
 			}
 			System.out.println("TOT. TIME: " +  currItinerary.getTime());
 			System.out.println("TOT. KM: " +    currItinerary.getKilometer());
 			System.out.println("TOT. PRICE: " + currItinerary.getPrice());
 			System.out.println("\n\n--------------------");
+		}
+	}
+	
+	private void print(Connection conn){
+		if ( conn instanceof Expressway){
+			conn = (Expressway)conn;
+			System.out.println("NAME: " + ((Expressway) conn).getName());
+			System.out.println("SAFE: " + ((Expressway)conn).getSafe());
+		}
+		if ( conn instanceof MainRoad){
+			System.out.println("NUMBER: " + ((MainRoad)conn).getNumber());
+			System.out.println("TRAFFIC LIGHT:" + ((MainRoad)conn).isTrafficLight());
+		}
+		if ( conn instanceof Motorway){
+			System.out.println("NUMBER: " + ((Motorway)conn).getNumber());
+			System.out.println("PRICE: " + ((Motorway)conn).getPrice());
 		}
 	}
 

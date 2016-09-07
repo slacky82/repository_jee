@@ -28,6 +28,8 @@ public class VelocityTest {
 		if(v > 60){
 			System.out.println("v > 60 v= "+ v + " Km/h");
 		}
+		
+		
 	} 
 	
 	public static void exerciseTwo(){
@@ -52,5 +54,6 @@ public class VelocityTest {
 		if(d < s){
 			p = p - b*(s-d);
 		}
+		System.out.println("FUCK!!");
 	}
 }
