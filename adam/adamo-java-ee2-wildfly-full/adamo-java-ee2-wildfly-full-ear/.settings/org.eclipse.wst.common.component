@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="adamo-java-ee2-wildfly-full-ear">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="adamo-java-ee2-wildfly-full-web.war" deploy-path="/" handle="module:/resource/adamo-java-ee2-wildfly-full-web/adamo-java-ee2-wildfly-full-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="adamo-java-ee2-wildfly-full-ejb.jar" deploy-path="/" handle="module:/resource/adamo-java-ee2-wildfly-full-ejb/adamo-java-ee2-wildfly-full-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
