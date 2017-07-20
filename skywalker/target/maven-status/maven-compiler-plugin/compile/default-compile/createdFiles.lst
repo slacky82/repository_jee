@@ -1,0 +1,7 @@
+com\acme\file\walker\Walker.class
+com\acme\utils\TypeParser.class
+com\acme\file\walker\Walker$1.class
+com\acme\main\MainClass.class
+com\acme\file\parser\Parser.class
+com\acme\file\parser\ParserDOM.class
+com\acme\file\parser\ParserFile.class
