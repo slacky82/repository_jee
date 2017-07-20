@@ -3,19 +3,19 @@ package com.acme.mappy;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.acme.nerdlittleproject.connections.Connection;
-import it.acme.nerdlittleproject.connections.Expressway;
-import it.acme.nerdlittleproject.connections.MainRoad;
-import it.acme.nerdlittleproject.connections.Motorway;
-import it.acme.nerdlittleproject.exception.InvalidItinerary;
-import it.acme.nerdlittleproject.exception.NoSuchItinerary;
-import it.acme.nerdlittleproject.itineraries.EmptyItinerary;
-import it.acme.nerdlittleproject.itineraries.Itinerary;
-import it.acme.nerdlittleproject.itineraries.ItineraryStep;
-import it.acme.nerdlittleproject.utils.Compare;
-import it.acme.nerdlittleproject.utils.CompareKm;
-import it.acme.nerdlittleproject.utils.ComparePrice;
-import it.acme.nerdlittleproject.utils.CompareTime;
+import com.acme.mappy.connections.Connection;
+import com.acme.mappy.connections.Expressway;
+import com.acme.mappy.connections.MainRoad;
+import com.acme.mappy.connections.Motorway;
+import com.acme.mappy.exception.InvalidItinerary;
+import com.acme.mappy.exception.NoSuchItinerary;
+import com.acme.mappy.itineraries.EmptyItinerary;
+import com.acme.mappy.itineraries.Itinerary;
+import com.acme.mappy.itineraries.ItineraryStep;
+import com.acme.mappy.utils.compare.Compare;
+import com.acme.mappy.utils.compare.CompareKm;
+import com.acme.mappy.utils.compare.ComparePrice;
+import com.acme.mappy.utils.compare.CompareTime;
 
 public class Mappy {
 	

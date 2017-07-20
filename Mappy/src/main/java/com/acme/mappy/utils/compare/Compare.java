@@ -1,6 +1,6 @@
 package com.acme.mappy.utils.compare;
 
-import it.acme.nerdlittleproject.itineraries.Itinerary;
+import com.acme.mappy.itineraries.Itinerary;
 
 public interface Compare {	
 	

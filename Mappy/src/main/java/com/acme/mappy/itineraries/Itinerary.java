@@ -3,11 +3,11 @@ package com.acme.mappy.itineraries;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.acme.nerdlittleproject.connections.Connection;
-import it.acme.nerdlittleproject.connections.Expressway;
-import it.acme.nerdlittleproject.connections.MainRoad;
-import it.acme.nerdlittleproject.connections.Motorway;
-import it.acme.nerdlittleproject.exception.InvalidItinerary;
+import com.acme.mappy.connections.Connection;
+import com.acme.mappy.connections.Expressway;
+import com.acme.mappy.connections.MainRoad;
+import com.acme.mappy.connections.Motorway;
+import com.acme.mappy.exception.InvalidItinerary;
 
 public abstract class Itinerary {
 	//check if is right that this is there????

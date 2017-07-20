@@ -1,6 +1,6 @@
 package com.acme.mappy.itineraries;
 
-import it.acme.nerdlittleproject.connections.Connection;
+import com.acme.mappy.connections.Connection;
 
 public class ItineraryStep extends Itinerary {
 	

@@ -1,8 +1,8 @@
 package com.acme.mappy;
 
-import com.acme.nerdlittleproject.connections.Connection;
-import it.acme.nerdlittleproject.connections.MainRoad;
-import it.acme.nerdlittleproject.itineraries.Itinerary;
+import com.acme.mappy.connections.Connection;
+import com.acme.mappy.connections.MainRoad;
+import com.acme.mappy.itineraries.Itinerary;
 
 public class Main {
 
