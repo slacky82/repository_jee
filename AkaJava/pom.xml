@@ -5,14 +5,20 @@
   <version>0.0.1-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
     <resources>
       <resource>
         <directory>src</directory>
         <excludes>
           <exclude>**/*.java</exclude>
         </excludes>
-      </resource>
+      </resource>      
     </resources>
+    <testResources>
+		<testResource>
+			<directory>src/test/resources</directory>
+		</testResource>
+	</testResources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
