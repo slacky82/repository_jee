@@ -2,6 +2,8 @@ package test.java;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -36,5 +38,14 @@ public class TestGeneric {
 	    ((Dog) animal).bark();
 		
 	}
+	
+	@Test
+	public void testBigDecimalLong() {
+		long foo = 0;
+		new BigDecimal((Long)foo);
+		
+	}
+	
+	
 
 }

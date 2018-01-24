@@ -1,5 +1,8 @@
 package it.nerd.kata.src;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class FizzBuzz {
 	
 	/**
@@ -11,6 +14,8 @@ public class FizzBuzz {
 	
 	public static int counter = 0;
 	
+	 private static final Logger _log = LogManager.getLogger(FizzBuzz.class);
+	
 	public static boolean isMultiplesOfThree(int number){
 		counter ++;
 		return number % 3 == 0;
@@ -20,17 +25,17 @@ public class FizzBuzz {
 		counter ++;
 		return number % 5 == 0;		
 	} 
-	
+	/* score 60% to many if-else constructor :( */
 	public static void coreDummy() {
 		for (int number = 1; number <= 100; number++) {
 			if (isMultiplesOfThree(number) && isMultiplesOfFive(number)) {
-				System.out.println("FizzBuz");
+				_log.info("FizzBuz: " + number );
 			} else if (isMultiplesOfThree(number)) {
-				System.out.println("Fizz");
+				_log.info("Fizz: " + number);
 			} else if (isMultiplesOfFive(number)) {
-				System.out.println("Buzz");
+				_log.info("Buzz: " + number);
 			} else {
-				System.out.println(String.valueOf(number));
+				_log.info(String.valueOf(number));
 			}
 		}
 	}
